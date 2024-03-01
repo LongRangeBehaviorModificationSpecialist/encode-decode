@@ -67,52 +67,35 @@ class ASCII:
 
         results['input'] = f'{input_string}'
 
-        b64 = ASCII.ascii_to_base64(
-            self, input_string)
+        b64 = ASCII.ascii_to_base64(self, input_string)
         results['Base64'] = f'{b64}'
 
-        binary = ASCII.ascii_to_binary(
-            self, input_string)
+        binary = ASCII.ascii_to_binary(self, input_string)
         results['Binary'] = f'{binary}'
 
-        decimal = ASCII.ascii_to_decimal(
-            self, input_string)
+        decimal = ASCII.ascii_to_decimal(self, input_string)
         results['Decimal'] = f'{decimal}'
 
-        hex = ASCII.ascii_to_hexadecimal(
-            self, input_string)
+        hex = ASCII.ascii_to_hexadecimal(self, input_string)
         results['Hexadecimal'] = f'{hex}'
 
-        octal = ASCII.ascii_to_octal(
-            self, input_string)
+        octal = ASCII.ascii_to_octal(self, input_string)
         results['Octal'] = f'{octal}'
 
-        rot13 = ASCII.ascii_to_rot13(
-            self, input_string)
+        rot13 = ASCII.ascii_to_rot13(self, input_string)
         results['Rot13'] = f'{rot13}'
 
-        morse_code = MorseCode.encode_morse_code(
-            self, input_string)
+        morse_code = MorseCode.encode_morse_code(self, input_string)
         results['Morse Code'] = f'{morse_code}'
 
         return results
 
 
     def print_ascii_output_panels(self, input_string: str) -> None:
-        results = ASCII.ascii_convert_all(
-            self,
-            input_string=input_string)
-
-        Results.print_results_panels(
-            self,
-            results_dict=results)
+        results = ASCII.ascii_convert_all(self, input_string=input_string)
+        Results.print_results_panels(self, results_dict=results)
 
 
     def print_ascii_output_table(self, input_string: str) -> None:
-        results = ASCII.ascii_convert_all(
-            self,
-            input_string=input_string)
-
-        Results.print_results_table(
-            self,
-            results_dict=results)
+        results = ASCII.ascii_convert_all(self, input_string=input_string)
+        Results.print_results_table(self, results_dict=results)
