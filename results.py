@@ -17,15 +17,15 @@ class Results:
 
 
     def set_output_type(self):
-        output_type = console.input(f"""[bright_white]
-Enter output format (`p` = Panels or `t` = Table) >>> """)
+        output_type = console.input(f'''[bright_white]
+Enter output format (`p` = Panels or `t` = Table) >>> ''')
         return output_type.strip().lower()
 
 
     def print_results(self, results: str) -> str:
-        output = console.print(f"""[bold dodger_blue1]
+        output = console.print(f'''[bold dodger_blue1]
 RESULTS:
-[bold yellow2]{results}""")
+[bold yellow2]{results}''')
         return output
 
 
@@ -34,44 +34,41 @@ RESULTS:
             box=box.HORIZONTALS,
             show_header=True,
             header_style='bold #2070b2',
-            show_lines=True
-        )
+            show_lines=True)
+
         results_table.add_column(
             Text(
-                'Format', justify='left'
-            ),
-            justify='left', no_wrap=False
-        )
+                'Format', justify='left'),
+                justify='left', no_wrap=False)
+
         results_table.add_column(
             Text(
-                'Encoded String', justify='left'
-            ),
-            justify='left', ratio=2, no_wrap=False
-        )
+                'Encoded String', justify='left'),
+                justify='left', ratio=2, no_wrap=False)
 
         results_table.add_row(
-            f'[bold green3]Input Value', f'[bold green3]`{results_dict["input"]}`')
+            f'[bold green3]Input Value',
+            f'[bold green3]`{results_dict["input"]}`')
 
         new_dict = {key: value for key, value in results_dict.items() if key not in ['type','input']}
 
         for key, value in new_dict.items():
             results_table.add_row(
-                f'[bright_white]{key}', f'[khaki1]{value}', end_section=True)
+                f'[bright_white]{key}',
+                f'[khaki1]{value}',
+                end_section=True)
 
         inner_panel = Panel(
             Align.center(
                 Group(
-                    Align.left(results_table)
-                ),
-                vertical='middle'
-            ),
+                    Align.left(results_table)),
+                vertical='middle'),
             box=box.ROUNDED,
             expand=False,
             style='none',
             border_style='none',
             title=f'Convert from {results_dict["type"].upper()} Input',
-            safe_box=True
-        )
+            safe_box=True)
 
 
         # table = Table(box=box.HORIZONTALS, show_header=True,

@@ -8,7 +8,7 @@ console = Console()
 
 
 class MorseCode:
-    """Python program to implement Morse Code Translator
+    '''Python program to implement Morse Code Translator
 
     VARIABLE KEY
     'cipher' -> 'stores the morse translated form of the english string'
@@ -16,25 +16,23 @@ class MorseCode:
     'citext' -> 'stores morse code of a single character'
     'i' -> 'keeps count of the spaces between morse characters'
     'message' -> 'stores the string to be encoded or decoded'
-    """
+    '''
 
     # Dictionary representing the morse code chart
-    MORSE_CODE_DICT = { 'A':'.-', 'B':'-...', 'C':'-.-.',
-                       'D':'-..', 'E':'.','F':'..-.', 'G':'--.',
-                       'H':'....', 'I':'..', 'J':'.---', 'K':'-.-',
-                       'L':'.-..', 'M':'--', 'N':'-.', 'O':'---',
-                       'P':'.--.', 'Q':'--.-', 'R':'.-.', 'S':'...',
-                       'T':'-', 'U':'..-', 'V':'...-', 'W':'.--',
-                       'X':'-..-', 'Y':'-.--', 'Z':'--..', '1':'.----',
-                       '2':'..---', '3':'...--', '4':'....-', '5':'.....',
-                       '6':'-....', '7':'--...', '8':'---..', '9':'----.',
-                       '0':'-----', ', ':'--..--', '.':'.-.-.-',
-                       '?':'..--..', '/':'-..-.', '-':'-....-',
-                       '(':'-.--.', ')':'-.--.-'}
+    MORSE_CODE_DICT = {
+        'A':'.-', 'B':'-...', 'C':'-.-.', 'D':'-..', 'E':'.',
+        'F':'..-.', 'G':'--.', 'H':'....', 'I':'..', 'J':'.---',
+        'K':'-.-', 'L':'.-..', 'M':'--', 'N':'-.', 'O':'---',
+        'P':'.--.', 'Q':'--.-', 'R':'.-.', 'S':'...', 'T':'-',
+        'U':'..-', 'V':'...-', 'W':'.--', 'X':'-..-', 'Y':'-.--',
+        'Z':'--..', '1':'.----', '2':'..---', '3':'...--',
+        '4':'....-', '5':'.....', '6':'-....', '7':'--...', '8':'---..',
+        '9':'----.', '0':'-----', ', ':'--..--', '.':'.-.-.-',
+        '?':'..--..', '/':'-..-.', '-':'-....-', '(':'-.--.', ')':'-.--.-'}
 
 
     def encode_morse_code(self, input_string: str) -> str:
-        """Conversion from Morse Code value to ASCII
+        '''Conversion from Morse Code value to ASCII
 
         Args:
           str: ASCII encoded string
@@ -43,7 +41,7 @@ class MorseCode:
 
         Returns:
           str: Morse Code string to convert
-        """
+        '''
         cipher = ''
         input_string = input_string.upper()
         for c in input_string:
@@ -58,14 +56,14 @@ class MorseCode:
 
 
     def decode_morse_code(self, input_string: str) -> str:
-        """Conversion from Morse Code value to ASCII
+        '''Conversion from Morse Code value to ASCII.
 
         Args:
           str: Morse Code string to convert
 
         Returns:
           str: ASCII encoded string
-        """
+        '''
         # Extra space added at the end to access the last morse code
         input_string += ' '
         decipher = ''

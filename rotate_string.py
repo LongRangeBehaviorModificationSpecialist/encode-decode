@@ -1,5 +1,4 @@
 # !/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 import string
 from rich.console import Console
@@ -11,6 +10,7 @@ console = Console()
 
 
 class RotateString:
+
 
     def rotate_string(self, input_string: str, n: int) -> str:
         lc = string.ascii_lowercase
