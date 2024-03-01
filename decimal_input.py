@@ -55,54 +55,32 @@ class Decimal:
     def decimal_convert_all(self, input_string: str) -> None:
 
         results = {}
-
         results['type'] = 'Decimal'
-
         results['input'] = f'{input_string}'
 
-        ascii = Decimal.decimal_to_ascii(
-            self,
-            input_string)
+        ascii = Decimal.decimal_to_ascii(self, input_string)
         results['ASCII'] = f'{ascii}'
 
-        base64 = Decimal.decimal_to_base64(
-            self,
-            input_string)
+        base64 = Decimal.decimal_to_base64(self, input_string)
         results['Base64'] = f'{base64}'
 
-        binary = Decimal.decimal_to_binary(
-            self,
-            input_string)
+        binary = Decimal.decimal_to_binary(self, input_string)
         results['Binary'] = f'{binary}'
 
-        hex = Decimal.decimal_to_hexadecimal(
-            self,
-            input_string)
+        hex = Decimal.decimal_to_hexadecimal(self, input_string)
         results['Hexadecimal'] = f'{hex}'
 
-        octal = Decimal.decimal_to_octal(
-            self,
-            input_string)
+        octal = Decimal.decimal_to_octal(self, input_string)
         results['Octal'] = f'{octal}'
 
         return results
 
 
     def print_decimal_output_panels(self, input_string: str) -> None:
-        results = Decimal.decimal_convert_all(
-            self,
-            input_string=input_string)
-
-        Results.print_results_panels(
-            self,
-            results_dict=results)
+        results = Decimal.decimal_convert_all(self, input_string)
+        Results.print_results_panels(self, results_dict=results)
 
 
     def print_decimal_output_table(self, input_string: str) -> None:
-        results = Decimal.decimal_convert_all(
-            self,
-            input_string=input_string)
-
-        Results.print_results_table(
-            self,
-            results_dict=results)
+        results = Decimal.decimal_convert_all(self, input_string)
+        Results.print_results_table(self, results_dict=results)

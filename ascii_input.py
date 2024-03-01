@@ -62,9 +62,7 @@ class ASCII:
     def ascii_convert_all(self, input_string: str) -> dict:
 
         results = {}
-
         results['type'] = 'ascii'
-
         results['input'] = f'{input_string}'
 
         b64 = ASCII.ascii_to_base64(self, input_string)
@@ -92,10 +90,10 @@ class ASCII:
 
 
     def print_ascii_output_panels(self, input_string: str) -> None:
-        results = ASCII.ascii_convert_all(self, input_string=input_string)
+        results = ASCII.ascii_convert_all(self, input_string)
         Results.print_results_panels(self, results_dict=results)
 
 
     def print_ascii_output_table(self, input_string: str) -> None:
-        results = ASCII.ascii_convert_all(self, input_string=input_string)
+        results = ASCII.ascii_convert_all(self, input_string)
         Results.print_results_table(self, results_dict=results)

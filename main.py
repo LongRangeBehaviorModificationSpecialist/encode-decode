@@ -18,7 +18,6 @@ from results import Results
 
 __author__ = 'a/k/a bWlrZXNwb24='
 __last_updated__ = '2024-03-01'
-__desc__ = 'Command line program that converts strings between various encodings methods'
 
 # Make the console object
 console = Console()
@@ -86,136 +85,104 @@ Is the binary data separated with a space character every 8 bits (y/n)?
         print(main_menu)
 
         input_type: str = console.input('''[bold khaki3]\nENTER CHOICE >>> ''')
-
         input_type = input_type.lower().strip()
 
+
         if input_type == 'a':
-            input_string = self.get_input(
-                self,
-                input_type='ASCII')
+
+            input_string = self.get_input(self, input_type='ASCII')
             output = Results.set_output_type(self)
+
             if output== 'p':
-                ASCII.print_ascii_output_panels(
-                    self,
-                    input_string=input_string)
+                ASCII.print_ascii_output_panels(self, input_string)
             elif output == 't':
-                ASCII.print_ascii_output_table(
-                    self,
-                    input_string=input_string)
+                ASCII.print_ascii_output_table(self, input_string)
             else:
                 self.no_valid_yn_option(self)
                 self.main(self)
 
 
         elif input_type == 'b':
-            input_string = self.get_input(
-                self,
-                input_type='Base64')
+
+            input_string = self.get_input(self, input_type='Base64')
             output = Results.set_output_type(self)
+
             if output == 'p':
-                Base64.print_base64_output_panels(
-                    self,
-                    input_string=input_string)
+                Base64.print_base64_output_panels(self, input_string)
             elif output == 't':
-                Base64.print_base64_output_table(
-                    self,
-                    input_string=input_string)
+                Base64.print_base64_output_table(self, input_string)
             else:
                 self.no_valid_yn_option(self)
                 self.main(self)
 
 
         elif input_type == 'c':
+
             choice = self.get_binary_data_format(self)
-            input_string = self.get_input(
-                self,
-                input_type='Binary')
+            input_string = self.get_input(self,input_type='Binary')
+
             output = Results.set_output_type(self)
 
             if choice == 'y' and output == 'p':
-                Binary.print_binary_separated_output_panels(
-                    self,
-                    input_string=input_string)
+                Binary.print_binary_separated_output_panels(self, input_string)
             elif choice == 'n' and output == 'p':
-                Binary.print_binary_combined_output_panels(
-                    self,
-                    input_string=input_string)
+                Binary.print_binary_combined_output_panels(self, input_string)
             elif choice == 'y' and output == 't':
-                Binary.print_binary_separated_output_table(
-                    self,
-                    input_string=input_string)
+                Binary.print_binary_separated_output_table(self, input_string)
             elif choice == 'n' and output == 't':
-                Binary.print_binary_combined_output_table(
-                    self,
-                    input_string=input_string)
+                Binary.print_binary_combined_output_table(self, input_string)
             else:
                 self.no_valid_yn_option(self)
                 self.main(self)
 
 
         elif input_type == 'd':
-            input_string = self.get_input(
-                self,
-                input_type='Decimal')
+
+            input_string = self.get_input(self, input_type='Decimal')
             output = Results.set_output_type(self)
+
             if output == 'p':
-                Decimal.print_decimal_output_panels(
-                    self,
-                    input_string=input_string)
+                Decimal.print_decimal_output_panels(self, input_string)
             elif output == 't':
-                Decimal.print_decimal_output_table(
-                    self,
-                    input_string=input_string)
+                Decimal.print_decimal_output_table(self, input_string)
             else:
                 self.no_valid_yn_option(self)
                 self.main(self)
 
 
         elif input_type == 'e':
-            input_string = self.get_input(
-                self,
-                input_type='Hexadecimal')
+
+            input_string = self.get_input(self, input_type='Hexadecimal')
             output = Results.set_output_type(self)
+
             if output == 'p':
-                Hexadecimal.print_hex_output_panels(
-                    self,
-                    input_string=input_string)
+                Hexadecimal.print_hex_output_panels(self, input_string)
             elif output == 't':
-                Hexadecimal.print_hex_output_table(
-                    self,
-                    input_string=input_string)
+                Hexadecimal.print_hex_output_table(self, input_string)
             else:
                 self.no_valid_yn_option(self)
                 self.main(self)
 
 
         elif input_type == 'f':
-            input_string = self.get_input(
-                self,
-                input_type='Octal')
+
+            input_string = self.get_input(self, input_type='Octal')
             output = Results.set_output_type(self)
+
             if output == 'p':
-                Octal.print_octal_output_panels(
-                    self,
-                    input_string=input_string)
+                Octal.print_octal_output_panels(self, input_string)
             elif output == 't':
-                Octal.print_octal_output_table(
-                    self,
-                    input_string=input_string)
+                Octal.print_octal_output_table(self, input_string)
             else:
                 self.no_valid_yn_option(self)
                 self.main(self)
 
 
         elif input_type == 'g':
-            input_string = self.get_input(
-                self,
-                input_type='Rotate String')
-            shift_value = self.get_cipher_shift_value(self)
-            RotateString.rotate_string(
-                self,
-                input_string=input_string,
-                n=shift_value)
+
+            input_string = self.get_input(self, input_type='Rotate String')
+            n = self.get_cipher_shift_value(self)
+            RotateString.rotate_string(self, input_string, n)
 
 
         else:

@@ -50,59 +50,35 @@ class Base64:
     def base64_convert_all(self, input_string: str) -> None:
 
         results = {}
-
         results['type'] = 'Base64'
-
         results['input'] = f'{input_string}'
 
-        ascii = Base64.base64_to_ascii(
-            self,
-            input_string)
+        ascii = Base64.base64_to_ascii(self, input_string)
         results['ASCII'] = f'{ascii}'
 
-        binary = Base64.base64_to_binary(
-            self,
-            input_string)
+        binary = Base64.base64_to_binary(self, input_string)
         results['Binary'] = f'{binary}'
 
-        decimal = Base64.base64_to_decimal(
-            self,
-            input_string)
+        decimal = Base64.base64_to_decimal(self, input_string)
         results['Decimal'] = f'{decimal}'
 
-        hex = Base64.base64_to_hexadecimal(
-            self,
-            input_string)
+        hex = Base64.base64_to_hexadecimal(self, input_string)
         results['Hexadecimal'] = f'{hex}'
 
-        octal = Base64.base64_to_octal(
-            self,
-            input_string)
+        octal = Base64.base64_to_octal(self, input_string)
         results['Octal'] = f'{octal}'
 
-        morse_code = MorseCode.encode_morse_code(
-            self,
-            input_string)
+        morse_code = MorseCode.encode_morse_code(self, input_string)
         results['Morse Code'] = f'{morse_code}'
 
         return results
 
 
     def print_base64_output_panels(self, input_string: str) -> None:
-        results = Base64.base64_convert_all(
-            self,
-            input_string=input_string)
-
-        Results.print_results_panels(
-            self,
-            results_dict=results)
+        results = Base64.base64_convert_all(self, input_string)
+        Results.print_results_panels(self, results_dict=results)
 
 
     def print_ascii_output_table(self, input_string: str) -> None:
-        results = Base64.base64_convert_all(
-            self,
-            input_string=input_string)
-
-        Results.print_results_table(
-            self,
-            results_dict=results)
+        results = Base64.base64_convert_all(self, input_string)
+        Results.print_results_table(self, results_dict=results)

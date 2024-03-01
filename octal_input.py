@@ -55,9 +55,7 @@ class Octal:
     def octal_convert_all(self, input_num: str) -> dict:
 
         results = {}
-
         results['type'] = 'Octal'
-
         results['input'] = f'{input_num}'
 
         binary = Octal.octal_to_binary(self, input_num)
@@ -73,19 +71,10 @@ class Octal:
 
 
     def print_octal_output_panels(self, input_string: str) -> None:
-        results = Octal.octal_convert_all(
-            self,
-            input_string=input_string)
-
-        Results.print_results_panels(
-            self,
-            results_dict=results)
+        results = Octal.octal_convert_all(self, input_string)
+        Results.print_results_panels(self, results_dict=results)
 
 
     def print_octal_output_table(self, input_string: str) -> None:
-        results = Octal.octal_convert_all(
-            self,
-            input_string=input_string)
-        Results.print_results_table(
-            self,
-            results_dict=results)
+        results = Octal.octal_convert_all(self, input_string)
+        Results.print_results_table(self, results_dict=results)
