@@ -1,10 +1,5 @@
 # !/usr/bin/env python3
 
-from rich.console import Console
-
-# Make the console object
-console = Console()
-
 
 class MorseCode:
     '''Python program to implement Morse Code Translator

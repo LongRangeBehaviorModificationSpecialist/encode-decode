@@ -1,16 +1,10 @@
 # !/usr/bin/env python3
 
 import base64
-from rich.console import Console
-
 from results import Results
-
-# Make the console object
-console = Console()
 
 
 class Binary:
-
 
     def binary_separated_to_ascii(self, input_string: str) -> str:
         # Convert the binary string to a list of integers.
@@ -133,21 +127,25 @@ class Binary:
         return combined_results
 
 
-    def print_binary_separated_output_panels(self, input_string: str) -> None:
+    def print_binary_separated_output_panels(self,
+                                             input_string: str) -> None:
         sep_results = Binary.binary_converted_separated(self, input_string)
         Results.print_results_panels(self, results_dict=sep_results)
 
 
-    def print_binary_separated_output_table(self, input_string: str) -> None:
+    def print_binary_separated_output_table(self,
+                                            input_string: str) -> None:
         sep_results = Binary.binary_converted_separated(self, input_string)
         Results.print_results_table(self, results_dict=sep_results)
 
 
-    def print_binary_combined_output_panels(self, input_string: str) -> None:
+    def print_binary_combined_output_panels(self,
+                                            input_string: str) -> None:
         combined_results = Binary.binary_convert_combined(self, input_string)
         Results.print_results_panels(self, results_dict=combined_results)
 
 
-    def print_binary_combined_output_table(self, input_string: str) -> None:
+    def print_binary_combined_output_table(self,
+                                           input_string: str) -> None:
         combined_results = Binary.binary_convert_combined(self, input_string)
         Results.print_results_table(self, results_dict=combined_results)

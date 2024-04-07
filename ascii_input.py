@@ -2,17 +2,12 @@
 
 import base64
 import codecs
-from rich.console import Console
 
 from results import Results
 from morse_code import MorseCode
 
-# Make the console object
-console = Console()
-
 
 class ASCII:
-
 
     def ascii_to_base64(self, input_string: str) -> str:
         '''Convert the ASCII input string to BASE64 string.'''
@@ -89,11 +84,13 @@ class ASCII:
         return results
 
 
-    def print_ascii_output_panels(self, input_string: str) -> None:
+    def print_ascii_output_panels(self,
+                                  input_string: str) -> None:
         results = ASCII.ascii_convert_all(self, input_string)
         Results.print_results_panels(self, results_dict=results)
 
 
-    def print_ascii_output_table(self, input_string: str) -> None:
+    def print_ascii_output_table(self,
+                                 input_string: str) -> None:
         results = ASCII.ascii_convert_all(self, input_string)
         Results.print_results_table(self, results_dict=results)

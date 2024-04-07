@@ -1,16 +1,11 @@
 # !/usr/bin/env python3
 
 import base64
-from rich.console import Console
 
 from results import Results
 
-# Make the console object
-console = Console()
-
 
 class Decimal:
-
 
     def decimal_to_ascii(self, input_string: str) -> str:
         '''Convert the DECIMAL input string to ASCII string.'''
@@ -76,11 +71,13 @@ class Decimal:
         return results
 
 
-    def print_decimal_output_panels(self, input_string: str) -> None:
+    def print_decimal_output_panels(self,
+                                    input_string: str) -> None:
         results = Decimal.decimal_convert_all(self, input_string)
         Results.print_results_panels(self, results_dict=results)
 
 
-    def print_decimal_output_table(self, input_string: str) -> None:
+    def print_decimal_output_table(self,
+                                   input_string: str) -> None:
         results = Decimal.decimal_convert_all(self, input_string)
         Results.print_results_table(self, results_dict=results)

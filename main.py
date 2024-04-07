@@ -1,6 +1,6 @@
 # !/usr/bin/env python3
 
-from rich import box, print
+from rich import box
 from rich.console import Console
 from rich.table import Table
 
@@ -20,35 +20,34 @@ __author__ = 'a/k/a bWlrZXNwb24='
 __last_updated__ = '2024-03-01'
 
 # Make the console object
-console = Console()
+c = Console()
 
 
 class Convert:
 
-
     def get_input(self, input_type: str) -> str:
-        input_string: str = console.input(f'''[bright_white]
+        input_string: str = c.input(f'''[bright_white]
 [-] Enter the data you want to encode from [bold khaki3]{input_type}[bright_white]:
 >>> ''')
         return input_string
 
 
     def get_binary_data_format(self) -> str:
-        choice: str = console.input('''[bright_white]
+        choice: str = c.input('''[bright_white]
 Is the binary data separated with a space character every 8 bits (y/n)?
 >>> ''')
         return choice.lower().strip()
 
 
     def get_cipher_shift_value(self) -> int:
-        shift_value: int = console.input('''[bright_white]
+        shift_value: int = c.input('''[bright_white]
 [-] Enter the value of the shift you want to use:
 >>> ''')
         return shift_value
 
 
     def no_valid_yn_option(self) -> None:
-        console.print('''[bold bright_red]
+        c.print('''[bold bright_red]
 !!! You did not enter a valid choice (either `y` or `n`). Please try again.''')
 
 
@@ -82,9 +81,9 @@ Is the binary data separated with a space character every 8 bits (y/n)?
         # Add blank line at end of options
         main_menu.add_row()
 
-        print(main_menu)
+        c.print(main_menu)
 
-        input_type: str = console.input('''[bold khaki3]\nENTER CHOICE >>> ''')
+        input_type: str = c.input('''[bold khaki3]\nENTER CHOICE >>> ''')
         input_type = input_type.lower().strip()
 
 
@@ -186,7 +185,7 @@ Is the binary data separated with a space character every 8 bits (y/n)?
 
 
         else:
-            console.print(f'''[bold bright_red]\n
+            c.print(f'''[bold bright_red]\n
 [-] Invalid choice entered. Please enter a valid option.''')
             self.main(self)
 

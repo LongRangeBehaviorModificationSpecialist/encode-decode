@@ -1,7 +1,6 @@
 # !/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
-from rich import box, print
+from rich import box
 from rich.align import Align
 from rich.console import Console, Group
 from rich.columns import Columns
@@ -10,20 +9,19 @@ from rich.table import Table
 from rich.text import Text
 
 # Make the console object
-console = Console()
+c = Console()
 
 
 class Results:
 
-
     def set_output_type(self) -> str:
-        output_type: str = console.input(f'''[bright_white]
+        output_type: str = c.input(f'''[bright_white]
 Enter output format (`p` = Panels or `t` = Table) >>> ''')
         return output_type.strip().lower()
 
 
     def print_results(self, results: str) -> str:
-        output: str = console.print(f'''[bold dodger_blue1]
+        output: str = c.print(f'''[bold dodger_blue1]
 RESULTS:
 [bold yellow2]{results}''')
         return output
@@ -71,7 +69,7 @@ RESULTS:
             title=f'Convert from {results_dict["type"].upper()} Input',
             safe_box=True)
 
-        print(inner_panel)
+        c.print(inner_panel)
 
 
     def print_results_panels(self, results_dict: dict) -> None:
@@ -83,4 +81,4 @@ RESULTS:
                           title=f'{key}',
                           padding=(0,1),
                           safe_box=True)]
-            print(Columns(rend))
+            c.print(Columns(rend))

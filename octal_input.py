@@ -1,15 +1,9 @@
 # !/usr/bin/env python3
 
-from rich.console import Console
-
 from results import Results
-
-# Make the console object
-console = Console()
 
 
 class Octal:
-
 
     def octal_to_binary(self, input_num: int) -> int:
         '''Converts an octal string to binary.
@@ -70,11 +64,13 @@ class Octal:
         return results
 
 
-    def print_octal_output_panels(self, input_string: str) -> None:
+    def print_octal_output_panels(self,
+                                  input_string: str) -> None:
         results = Octal.octal_convert_all(self, input_string)
         Results.print_results_panels(self, results_dict=results)
 
 
-    def print_octal_output_table(self, input_string: str) -> None:
+    def print_octal_output_table(self,
+                                 input_string: str) -> None:
         results = Octal.octal_convert_all(self, input_string)
         Results.print_results_table(self, results_dict=results)

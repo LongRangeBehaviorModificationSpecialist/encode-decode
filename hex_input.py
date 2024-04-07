@@ -1,17 +1,12 @@
 # !/usr/bin/env python3
 
 import binascii
-from rich.console import Console
 
 from results import Results
 from morse_code import MorseCode
 
-# Make the console object
-console = Console()
-
 
 class Hexadecimal:
-
 
     def hex_to_ascii(self, input_string: str) -> str:
         hex_string = input_string.replace(' ', '')
@@ -77,11 +72,13 @@ class Hexadecimal:
         return results
 
 
-    def print_hex_output_panels(self, input_string: str) -> None:
+    def print_hex_output_panels(self,
+                                input_string: str) -> None:
         results = Hexadecimal.hex_convert_all(self, input_string)
         Results.print_results_panel(self, results_dict=results)
 
 
-    def print_hex_output_table(self, input_string: str) -> None:
+    def print_hex_output_table(self,
+                               input_string: str) -> None:
         results = Hexadecimal.hex_convert_all(self, input_string)
         Results.print_results_table(self, results_dict=results)
