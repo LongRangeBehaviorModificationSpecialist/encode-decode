@@ -72,11 +72,8 @@ class Hexadecimal:
         return results
 
 
-    def print_hex_output_panels(self, input_string: str) -> None:
+    def print_hex_output(self, input_string: str) -> None:
         results = Hexadecimal.hex_convert_all(self, input_string)
-        Results.print_results_panel(self, results_dict=results)
-
-
-    def print_hex_output_table(self, input_string: str) -> None:
-        results = Hexadecimal.hex_convert_all(self, input_string)
-        Results.print_results_table(self, results_dict=results)
+        Results.print_results_table(self,
+                                    format="Hexadecimal",
+                                    results_dict=results)

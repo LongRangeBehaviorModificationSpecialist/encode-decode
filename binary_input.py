@@ -106,4 +106,6 @@ class Binary:
 
     def print_binary_output(self, input_string: str) -> None:
         combined_results = Binary.make_data_dict(self, input_string)
-        Results.print_results_table(self, results_dict=combined_results)
+        Results.print_results_table(self,
+                                    format="Binary",
+                                    results_dict=combined_results)

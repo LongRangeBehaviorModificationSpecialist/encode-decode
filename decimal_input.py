@@ -8,27 +8,27 @@ from results import Results
 
 class Decimal:
 
-    def decimal_to_ascii(self, input_string: int) -> str:
-        """Converts a sequence of decimal ASCII codes to a string."""
+    # def decimal_to_ascii(self, input_string: int) -> str:
+    #     """Converts a sequence of decimal ASCII codes to a string."""
 
-        if not isinstance(input_string, str):
-            raise TypeError("Input must be a string.")
+    #     if not isinstance(input_string, str):
+    #         raise TypeError("Input must be a string.")
 
-        decimal_sequence = input_string.strip()
+    #     decimal_sequence = input_string.strip()
 
-        if not decimal_sequence:
-            raise ValueError("Input cannot be empty.")
+    #     if not decimal_sequence:
+    #         raise ValueError("Input cannot be empty.")
 
-        # Split by spaces and convert each decimal to integer
-        try:
-            numbers = [int(num) for num in decimal_sequence.split()]
-        except ValueError:
-            raise ValueError("Input must be space-separated decimal numbers.")
+    #     # Split by spaces and convert each decimal to integer
+    #     try:
+    #         numbers = [int(num) for num in decimal_sequence.split()]
+    #     except ValueError:
+    #         raise ValueError("Input must be space-separated decimal numbers.")
 
-        # Convert each number to ASCII character then join into a single string
-        ascii_result = "".join([chr(num) for num in numbers])
+    #     # Convert each number to ASCII character then join into a single string
+    #     ascii_result = "".join([chr(num) for num in numbers])
 
-        return ascii_result
+    #     return ascii_result
 
 
         # input_list = []
@@ -39,44 +39,39 @@ class Decimal:
         # return ascii_result
 
 
-    def decimal_to_base64(self, input_string: int) -> str:
-        """Convert the DECIMAL input string to BASE64 string."""
-        ascii_string = Decimal.decimal_to_ascii(self, input_string)
-        b64_string = base64.b64encode(str(ascii_string).encode()).decode()
-        return b64_string
+    # def decimal_to_base64(self, input_string: int) -> str:
+    #     """Convert the DECIMAL input string to BASE64 string."""
+    #     ascii_string = Decimal.decimal_to_ascii(self, input_string)
+    #     b64_string = base64.b64encode(str(ascii_string).encode()).decode()
+    #     return b64_string
 
 
-    def decimal_to_binary(self, input_string: str) -> str:
-        """Convert the DECIMAL input string to BINARY string."""
-        list_of_nums = input_string.split()
-        binary_string = " ".join([bin(int(x))[2:].zfill(8) for x in list_of_nums])
+    def decimal_to_binary(self, input_string: int) -> str:
+        """Convert the DECIMAL number string to BINARY number."""
+        binary_string = "{0:b}".format(int(input_string))
         return binary_string
 
 
-    def decimal_to_hexadecimal(self, input_string: str) -> str:
-        """Convert the DECIMAL input string to HEXADECIMAL string."""
-        list_of_nums = input_string.split()
-        hex_string = "".join([hex(int(x))[2:] for x in list_of_nums]).upper()
-        return hex_string.upper()
+    def decimal_to_hexadecimal(self, input_string: int) -> str:
+        """Convert the DECIMAL number string to HEXADECIMAL number."""
+        hex_string = hex(int(input_string))
+        return hex_string
 
 
-    def decimal_to_octal(self, input_string: str) -> str:
-        """Convert the DECIMAL input string to OCTAL string."""
-        octal_string = ""
-        while input_string > 0:
-            octal = str(input_string % 8) + octal
-            input_string = input_string // 8
+    def decimal_to_octal(self, input_string: int) -> str:
+        """Convert the DECIMAL number string to OCTAL number."""
+        octal_string = oct(int(input_string))
         return octal_string
 
 
-    def make_data_dict(self, input_string: str) -> None:
+    def make_data_dict(self, input_string: int) -> None:
 
         results = {}
         results["type"] = "Decimal"
         results["input"] = f"{input_string}"
 
-        ascii = Decimal.decimal_to_ascii(self, input_string)
-        results["ASCII"] = f"{ascii}"
+        # ascii = Decimal.decimal_to_ascii(self, input_string)
+        # results["ASCII"] = f"{ascii}"
 
         # base64 = Decimal.decimal_to_base64(self, input_string)
         # results["Decimal -> ASCII -> Base64"] = f"{base64}"
@@ -93,11 +88,8 @@ class Decimal:
         return results
 
 
-    # def print_decimal_output_panels(self, input_string: str) -> None:
-    #     results = Decimal.decimal_convert_all(self, input_string)
-    #     Results.print_results_panels(self, results_dict=results)
-
-
     def print_decimal_output(self, input_string: str) -> None:
         results = Decimal.make_data_dict(self, input_string)
-        Results.print_results_table(self, results_dict=results)
+        Results.print_results_table(self,
+                                    format="Decimal",
+                                    results_dict=results)

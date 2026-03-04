@@ -59,9 +59,9 @@ class Convert:
             1:"From ASCII",
             2:"From Base64",
             3:"From Binary",
-            4:"From Decimal",
+            4:"From Decimal (Integer)",
             5:"From Hexadecimal",
-            6:"From Octal (integer -> Binary, Decimal, & Hex)",
+            6:"From Octal (Integer)",
             7:"Rotate String (Caesar Cipher)",
             8:"Exit Program"
         }
@@ -97,9 +97,10 @@ class Convert:
 
             try:
                 ASCII.print_ascii_output(self, input_string)
-            except Exception:
-                self.no_valid_yn_option(self)
+            except Exception as e:
+                print(f"Error: {e}")
                 self.main(self)
+                return None
 
 
         elif input_type == "2":
@@ -108,9 +109,10 @@ class Convert:
 
             try:
                 Base64.print_base64_output(self, input_string)
-            except Exception:
-                self.no_valid_yn_option(self)
+            except Exception as e:
+                print(f"Error: {e}")
                 self.main(self)
+                return None
 
 
         elif input_type == "3":
@@ -120,9 +122,10 @@ class Convert:
 
             try:
                 Binary.print_binary_output(self, input_string)
-            except Exception:
-                self.no_valid_yn_option(self)
+            except Exception as e:
+                print(f"Error: {e}")
                 self.main(self)
+                return None
 
 
         elif input_type == "4":
@@ -135,29 +138,32 @@ class Convert:
             # elif output == "t":
             try:
                 Decimal.print_decimal_output(self, input_string)
-            except Exception:
-                self.no_valid_yn_option(self)
+            except Exception as e:
+                print(f"Error: {e}")
                 self.main(self)
+                return None
 
 
         elif input_type == "5":
 
             input_string = self.get_input(self, input_type="Hexadecimal")
-            output = Results.set_output_type(self)
+            # output = Results.set_output_type(self)
 
-            if output == "p":
-                Hexadecimal.print_hex_output_panels(self, input_string)
-            elif output == "t":
-                Hexadecimal.print_hex_output_table(self, input_string)
-            else:
-                self.no_valid_yn_option(self)
+            # if output == "p":
+            #     Hexadecimal.print_hex_output_panels(self, input_string)
+            # elif output == "t":
+            try:
+                Hexadecimal.print_hex_output(self, input_string)
+            except Exception as e:
+                print(f"Error: {e}")
                 self.main(self)
+                return None
 
 
         elif input_type == "6":
 
             input_string = self.get_input(self, input_type="Octal")
-            output = Results.set_output_type(self)
+            # output = Results.set_output_type(self)
 
             # if output == "p":
             #     Octal.print_octal_output_panels(self, input_string)
@@ -165,9 +171,10 @@ class Convert:
             try:
                 Octal.print_octal_output(self, input_string)
             # else:
-            except:
-                self.no_valid_yn_option(self)
+            except Exception as e:
+                print(f"Error: {e}")
                 self.main(self)
+                return None
 
 
         elif input_type == "7":

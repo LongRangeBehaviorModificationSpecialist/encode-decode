@@ -27,27 +27,31 @@ RESULTS:
         return output
 
 
-    def print_results_table(self, results_dict: dict) -> None:
+    def print_results_table(self, format, results_dict: dict) -> None:
         results_table = Table(
             box=box.HORIZONTALS,
             show_header=True,
             header_style="bold #2070b2",
-            show_lines=True)
+            show_lines=True
+        )
 
         results_table.add_column(
             Text("Format", justify="left"),
                 justify="left",
-                no_wrap=False)
+                no_wrap=False
+        )
 
         results_table.add_column(
             Text("Encoded String", justify="left"),
                 justify="left",
                 ratio=2,
-                no_wrap=False)
+                no_wrap=False
+            )
 
         results_table.add_row(
-            f"[bold green3]Input Value",
-            f"""[bold green3]'{results_dict["input"]}'""")
+            f"[bold green3]Input Value ({format})",
+            f"""[bold green3]'{results_dict["input"]}'"""
+        )
 
         new_dict = {key: value for key, value in results_dict.items() if key not in ["type","input"]}
 
@@ -55,30 +59,17 @@ RESULTS:
             results_table.add_row(
                 f"[bright_white]{key}",
                 f"[khaki1]{value}",
-                end_section=True)
+                end_section=True
+            )
 
         inner_panel = Panel(
-            Align.center(
-                Group(
-                    Align.left(results_table)),
-                vertical="middle"),
+            Align.center(Group(Align.left(results_table)), vertical="middle"),
             box=box.ROUNDED,
             expand=False,
             style="none",
             border_style="none",
             title=f"""Convert from {results_dict["type"].upper()} Input""",
-            safe_box=True)
+            safe_box=True
+        )
 
         c.print(inner_panel)
-
-
-    # def print_results_panels(self, results_dict: dict) -> None:
-    #     new_dict = {key: value for key, value in results_dict.items() if key not in ["type","input"]}
-    #     for key, value in new_dict.items():
-    #         rend = [Panel(f"[yellow]{value}",
-    #                     border_style="blue",
-    #                     expand=True,
-    #                     title=f"{key}",
-    #                     padding=(0,1),
-    #                     safe_box=True)]
-    #         c.print(Columns(rend))

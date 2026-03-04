@@ -75,4 +75,6 @@ class ASCII:
 
     def print_ascii_output(self, input_string: str) -> None:
         results = ASCII.make_data_dict(self, input_string)
-        Results.print_results_table(self, results_dict=results)
+        Results.print_results_table(self,
+                                    format="ASCII",
+                                    results_dict=results)

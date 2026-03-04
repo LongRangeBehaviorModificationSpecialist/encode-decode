@@ -64,4 +64,6 @@ class Base64:
 
     def print_base64_output(self, input_string: str) -> None:
         results = Base64.make_data_dict(self, input_string)
-        Results.print_results_table(self, results_dict=results)
+        Results.print_results_table(self,
+                                    format="Base64",
+                                    results_dict=results)
