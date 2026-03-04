@@ -1,5 +1,7 @@
 # !/usr/bin/env python3
 
+import sys
+
 from rich import box
 from rich.console import Console
 from rich.table import Table
@@ -16,8 +18,8 @@ from rotate_string import RotateString
 from results import Results
 
 
-__author__ = 'a/k/a bWlrZXNwb24='
-__last_updated__ = '2024-03-01'
+__author__ = "a/k/a bWlrZXNwb24="
+__last_updated__ = "04-Mar-2026"
 
 # Make the console object
 c = Console()
@@ -26,169 +28,164 @@ c = Console()
 class Convert:
 
     def get_input(self, input_type: str) -> str:
-        input_string: str = c.input(f'''[bright_white]
-[-] Enter the data you want to encode from [bold khaki3]{input_type}[bright_white]:
->>> ''')
+        input_string: str = c.input(f"""[bright_white]
+[+] Enter the data you want to convert from [bold khaki3]{input_type}[bright_white]:
+>> """)
         return input_string
 
 
-    def get_binary_data_format(self) -> str:
-        choice: str = c.input('''[bright_white]
-Is the binary data separated with a space character every 8 bits (y/n)?
->>> ''')
-        return choice.lower().strip()
+#     def get_binary_data_format(self) -> str:
+#         choice: str = c.input("""[bright_white]
+# Is the binary data separated with a space character every 8 bits (y/n)?
+# >> """)
+#         return choice.lower().strip()
 
 
     def get_cipher_shift_value(self) -> int:
-        shift_value: int = c.input('''[bright_white]
-[-] Enter the value of the shift you want to use:
->>> ''')
+        shift_value: int = c.input("""[bright_white]
+[+] Enter the value of the shift you want to use:
+>> """)
         return shift_value
 
 
     def no_valid_yn_option(self) -> None:
-        c.print('''[bold bright_red]
-!!! You did not enter a valid choice (either `y` or `n`). Please try again.''')
+        c.print("""[bold bright_red]
+!!! You did not enter a valid choice (either "y" or "n"). Please try again.""")
 
 
     def main(self) -> None:
 
         menu_row_dict = {
-            'A':'From ASCII',
-            'B':'From Base64',
-            'C':'From Binary',
-            'D':'From Decimal',
-            'E':'From Hexadecimal',
-            'F':'From Octal (integer -> Binary, Decimal, & Hex)',
-            'G':'Rotate String (Caesar Cipher)'}
+            1:"From ASCII",
+            2:"From Base64",
+            3:"From Binary",
+            4:"From Decimal",
+            5:"From Hexadecimal",
+            6:"From Octal (integer -> Binary, Decimal, & Hex)",
+            7:"Rotate String (Caesar Cipher)",
+            8:"Exit Program"
+        }
 
         main_menu =Table(
-            title='[bold dodger_blue1]\nDATA CONVERTER / ENCODER, v.0.5.3',
+            title="[bold dodger_blue1]\nDATA CONVERTER / ENCODER, v.0.5.4",
             box=box.HEAVY_HEAD,
             show_header=False,
-            header_style='bold #2070b2',
+            header_style="bold #2070b2",
             show_lines=False,
             pad_edge=True,
             padding=(0,5,0,1),
-            caption=f'Last Updated: {__last_updated__}',
-            caption_justify='left',
+            caption=f"Last Updated: {__last_updated__}",
+            caption_justify="left",
             expand=True)
         main_menu.add_row(
-            '[khaki3][-] What type of encoding/decoding do you want to do?\n')
+            "[khaki3][-] What type of encoding/decoding do you want to do?\n")
         for key, value in menu_row_dict.items():
-            main_menu.add_row(f'[bright_white]  [{key}]  {value}')
+            main_menu.add_row(f"[bright_white]  [{key}]  {value}")
 
         # Add blank line at end of options
         main_menu.add_row()
 
         c.print(main_menu)
 
-        input_type: str = c.input('''[bold khaki3]\nENTER CHOICE >>> ''')
+        input_type: str = c.input("""[bold khaki3]\nENTER CHOICE >> """)
         input_type = input_type.lower().strip()
 
 
-        if input_type == 'a':
+        if input_type == "1":
 
-            input_string = self.get_input(self, input_type='ASCII')
-            output = Results.set_output_type(self)
+            input_string = self.get_input(self, input_type="ASCII")
 
-            if output== 'p':
-                ASCII.print_ascii_output_panels(self, input_string)
-            elif output == 't':
-                ASCII.print_ascii_output_table(self, input_string)
-            else:
+            try:
+                ASCII.print_ascii_output(self, input_string)
+            except Exception:
                 self.no_valid_yn_option(self)
                 self.main(self)
 
 
-        elif input_type == 'b':
+        elif input_type == "2":
 
-            input_string = self.get_input(self, input_type='Base64')
-            output = Results.set_output_type(self)
+            input_string = self.get_input(self, input_type="Base64")
 
-            if output == 'p':
-                Base64.print_base64_output_panels(self, input_string)
-            elif output == 't':
-                Base64.print_base64_output_table(self, input_string)
-            else:
+            try:
+                Base64.print_base64_output(self, input_string)
+            except Exception:
                 self.no_valid_yn_option(self)
                 self.main(self)
 
 
-        elif input_type == 'c':
+        elif input_type == "3":
 
-            choice = self.get_binary_data_format(self)
-            input_string = self.get_input(self,input_type='Binary')
+            input_string = self.get_input(self, input_type="Binary")
+            input_string = input_string.replace(" ", "")
 
-            output = Results.set_output_type(self)
-
-            if choice == 'y' and output == 'p':
-                Binary.print_binary_separated_output_panels(self, input_string)
-            elif choice == 'n' and output == 'p':
-                Binary.print_binary_combined_output_panels(self, input_string)
-            elif choice == 'y' and output == 't':
-                Binary.print_binary_separated_output_table(self, input_string)
-            elif choice == 'n' and output == 't':
-                Binary.print_binary_combined_output_table(self, input_string)
-            else:
+            try:
+                Binary.print_binary_output(self, input_string)
+            except Exception:
                 self.no_valid_yn_option(self)
                 self.main(self)
 
 
-        elif input_type == 'd':
+        elif input_type == "4":
 
-            input_string = self.get_input(self, input_type='Decimal')
-            output = Results.set_output_type(self)
+            input_string = self.get_input(self, input_type="Decimal")
+            # output = Results.set_output_type(self)
 
-            if output == 'p':
-                Decimal.print_decimal_output_panels(self, input_string)
-            elif output == 't':
-                Decimal.print_decimal_output_table(self, input_string)
-            else:
+            # if output == "p":
+            #     Decimal.print_decimal_output_panels(self, input_string)
+            # elif output == "t":
+            try:
+                Decimal.print_decimal_output(self, input_string)
+            except Exception:
                 self.no_valid_yn_option(self)
                 self.main(self)
 
 
-        elif input_type == 'e':
+        elif input_type == "5":
 
-            input_string = self.get_input(self, input_type='Hexadecimal')
+            input_string = self.get_input(self, input_type="Hexadecimal")
             output = Results.set_output_type(self)
 
-            if output == 'p':
+            if output == "p":
                 Hexadecimal.print_hex_output_panels(self, input_string)
-            elif output == 't':
+            elif output == "t":
                 Hexadecimal.print_hex_output_table(self, input_string)
             else:
                 self.no_valid_yn_option(self)
                 self.main(self)
 
 
-        elif input_type == 'f':
+        elif input_type == "6":
 
-            input_string = self.get_input(self, input_type='Octal')
+            input_string = self.get_input(self, input_type="Octal")
             output = Results.set_output_type(self)
 
-            if output == 'p':
-                Octal.print_octal_output_panels(self, input_string)
-            elif output == 't':
-                Octal.print_octal_output_table(self, input_string)
-            else:
+            # if output == "p":
+            #     Octal.print_octal_output_panels(self, input_string)
+            # elif output == "t":
+            try:
+                Octal.print_octal_output(self, input_string)
+            # else:
+            except:
                 self.no_valid_yn_option(self)
                 self.main(self)
 
 
-        elif input_type == 'g':
+        elif input_type == "7":
 
-            input_string = self.get_input(self, input_type='Rotate String')
+            input_string = self.get_input(self, input_type="Rotate String")
             n = self.get_cipher_shift_value(self)
             RotateString.rotate_string(self, input_string, n)
 
 
+        elif input_type == "8":
+            sys.exit(0)
+
+
         else:
-            c.print(f'''[bold bright_red]\n
-[-] Invalid choice entered. Please enter a valid option.''')
+            c.print(f"""[bold bright_red]\n
+[+] Invalid choice entered. Please enter a valid option.""")
             self.main(self)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     Convert.main(Convert)
