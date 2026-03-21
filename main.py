@@ -66,7 +66,7 @@ class Convert:
             8:"Exit Program"
         }
 
-        main_menu =Table(
+        main_menu = Table(
             title="[bold dodger_blue1]\nDATA CONVERTER / ENCODER, v.0.5.4",
             box=box.HEAVY_HEAD,
             show_header=False,
@@ -77,6 +77,7 @@ class Convert:
             caption=f"Last Updated: {__last_updated__}",
             caption_justify="left",
             expand=True)
+
         main_menu.add_row(
             "[khaki3][-] What type of encoding/decoding do you want to do?\n")
         for key, value in menu_row_dict.items():
