@@ -21,9 +21,10 @@ Enter output format ("p" = Panels or "t" = Table) >>> """)
 
 
     def print_results(self, results: str) -> str:
-        output: str = c.print(f"""[bold dodger_blue1]
-RESULTS:
-[bold yellow2]{results}""")
+        output: str = c.print(f"""[bold blue]
+RESULTS OF STRING ROTATION
+--------------------------\n
+[bold yellow2]  {results}\n""")
         return output
 
 
@@ -50,10 +51,10 @@ RESULTS:
 
         results_table.add_row(
             f"[bold green3]Input Value ({format})",
-            f"""[bold green3]'{results_dict["input"]}'"""
+            f"""[bold green3]'{results_dict["user_input"]}'"""
         )
 
-        new_dict = {key: value for key, value in results_dict.items() if key not in ["type","input"]}
+        new_dict = {key: value for key, value in results_dict.items() if key not in ["type", "user_input"]}
 
         for key, value in new_dict.items():
             results_table.add_row(

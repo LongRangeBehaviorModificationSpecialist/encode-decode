@@ -8,12 +8,15 @@ from morse_code import MorseCode
 
 class Hexadecimal:
 
+    def __init__(self, results, data_type):
+        self.results = results
+        self.data_type = data_type
+
     def hex_to_ascii(self, input_string: str) -> str:
         hex_string = input_string.replace(" ", "")
         string = binascii.unhexlify(hex_string)
         ascii_string = string.decode()
         return ascii_string
-
 
     def hex_to_base64(self, input_string: str) -> str:
         hex_string = input_string.replace(" ", "")
@@ -21,13 +24,11 @@ class Hexadecimal:
         base64_string = binascii.b2a_base64(hex_bytes).decode()
         return base64_string
 
-
     def hex_to_binary(self, input_string: str) -> str:
         ascii_string = Hexadecimal.hex_to_ascii(self, input_string)
         n = [x for x in ascii_string]
         binary_string = " ".join([bin(ord(x))[2:].zfill(8) for x in n])
         return binary_string
-
 
     def hex_to_decimal(self, input_string: str) -> str:
         # Remove any spaces if present
@@ -40,40 +41,29 @@ class Hexadecimal:
         decimal_string = " ".join(str(x) for x in d)
         return decimal_string
 
-
     def hex_to_morse_code(self, input_string: str) -> str:
         hex_string = input_string.replace(" ", "")
         morse_code_string = MorseCode.encode_morse_code(self,
             input_string=hex_string)
         return morse_code_string
 
-
     def hex_convert_all(self, input_string: str) -> None:
-
-        results = {}
-        results["type"] = "Hexadecimal"
-        results["input"] = f"{input_string}"
-
-        ascii = Hexadecimal.hex_to_ascii(self, input_string)
-        results["ASCII"] = f"{ascii}"
-
-        base64 = Hexadecimal.hex_to_base64(self, input_string)
-        results["Base64"] = f"{base64}"
-
-        binary = Hexadecimal.hex_to_binary(self, input_string)
-        results["Binary"] = f"{binary}"
-
-        decimal = Hexadecimal.hex_to_decimal(self, input_string)
-        results["Decimal"] = f"{decimal}"
-
-        morse_code = Hexadecimal.hex_to_morse_code(self, input_string)
-        results["Morse Code"] = f"{morse_code}"
-
-        return results
-
+        self.results["type"] = "Hexadecimal"
+        self.results["user_input"] = f"{input_string}"
+        ascii = self.hex_to_ascii(input_string)
+        self.results["ASCII"] = f"{ascii}"
+        base64 = self.hex_to_base64(input_string)
+        self.results["Base64"] = f"{base64}"
+        binary = self.hex_to_binary(input_string)
+        self.results["Binary"] = f"{binary}"
+        decimal = self.hex_to_decimal(input_string)
+        self.results["Decimal"] = f"{decimal}"
+        # morse_code = MorseCode.hex_to_morse_code(self, input_string)
+        # self.results["Morse Code"] = f"{morse_code}"
+        return self.results
 
     def print_hex_output(self, input_string: str) -> None:
-        results = Hexadecimal.hex_convert_all(self, input_string)
+        output = self.hex_convert_all(input_string)
         Results.print_results_table(self,
-                                    format="Hexadecimal",
-                                    results_dict=results)
+                                    format=self.data_type,
+                                    results_dict=output)

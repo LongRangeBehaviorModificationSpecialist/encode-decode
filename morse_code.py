@@ -24,17 +24,15 @@ class MorseCode:
         "9":"----.", "0":"-----", ", ":"--..--", ".":".-.-.-",
         "?":"..--..", "/":"-..-.", "-":"-....-", "(":"-.--.", ")":"-.--.-",
         "=":"-...-"
-        }
+    }
 
 
     def encode_morse_code(self, input_string: str) -> str:
         """Conversion from Morse Code value to ASCII
-
         Args:
             str: ASCII encoded string
                 One (1) space indicates different character
                 Two (2) spaces indicates different word
-
         Returns:
             str: Morse Code string to convert
         """
@@ -53,10 +51,8 @@ class MorseCode:
 
     def decode_morse_code(self, input_string: str) -> str:
         """Conversion from Morse Code value to ASCII.
-
         Args:
             str: Morse Code string to convert
-
         Returns:
             str: ASCII encoded string
         """

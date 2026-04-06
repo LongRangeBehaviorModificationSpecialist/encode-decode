@@ -7,13 +7,17 @@ from results import Results
 
 class RotateString:
 
-    def rotate_string(self, input_string: str, n: int) -> str:
+    def __init__(self, input_string: str, n: int):
+        self.input_string = input_string
+        self.n = int(n)
+
+    def rotate_string(self) -> str:
         lc = string.ascii_lowercase
         uc = string.ascii_uppercase
-        n = int(n)
+        # n = int(n)
         trans = str.maketrans(
-            lc + uc, lc[n:] + lc[:n] + uc[n:] + uc[:n])
-        rotated_string = str.translate(input_string, trans)
+            lc + uc, lc[self.n:] + lc[:self.n] + uc[self.n:] + uc[:self.n])
+        rotated_string = str.translate(self.input_string, trans)
         Results.print_results(self, results=rotated_string)
 
 
