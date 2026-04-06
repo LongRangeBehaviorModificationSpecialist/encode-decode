@@ -81,6 +81,7 @@ class Convert:
             caption=f"Last Updated: {self.last_updated}",
             caption_justify="left",
             expand=True)
+
         main_menu.add_row(
             "[khaki3][?] What type of encoding/decoding do you want to do?\n")
         for key, value in menu.items():
