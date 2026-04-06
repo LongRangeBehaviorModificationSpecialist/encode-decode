@@ -13,17 +13,18 @@ class Binary:
 
     def _validate(self, input_string: str) -> str:
         """Validates that the input is a non-empty binary string.
-        Returns the cleaned string."""
+        Returns the cleaned string.
+        """
         if not isinstance(input_string, str):
             raise TypeError("Input must be a string.")
-        binary_string = input_string.strip()
+        # binary_string = input_string.strip().replace(" ", "")
         # Check for empty input value
-        if not binary_string:
+        if not input_string:
             raise ValueError("Input can not be empty.")
         # Check to make sure the input consists of only 0 or 1
-        if any (c not in "01" for c in binary_string):
+        if any (c not in "01" for c in input_string):
             raise ValueError("Binary input must be only 0 or 1.")
-        return binary_string
+        return input_string
 
     def binary_to_ascii(self, input_string: str) -> str:
         list = []

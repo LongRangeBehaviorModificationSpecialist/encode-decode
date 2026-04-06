@@ -33,6 +33,15 @@ class Convert:
     def __init__(self):
         self.version = "0.5.5"
         self.last_updated = "06-Apr-2026"
+        self.input_type_dict = {
+            1: "ASCII",
+            2: "Base64",
+            3: "Binary",
+            4: "Decimal",
+            5: "Hexadecimal",
+            6: "Octal",
+            7: "Rotate String"
+        }
 
     def print_error_msg(self, e: str) -> str:
         return c.print(f"\n[red] There was an error during processing: {e}\n")
@@ -96,71 +105,89 @@ class Convert:
 
         if input_option == "1":
             try:
-                input_type = "ASCII"
+                input_type = self.input_type_dict[1]
                 input_string = self.get_input(input_type=input_type)
-                ascii = ASCII(results={}, data_type=input_type)
-                ascii.print_ascii_output(input_string=input_string)
+                ASCII(
+                    results={},
+                    data_type=input_type).print_ascii_output(
+                        input_string=input_string
+                )
             except Exception as e:
                 self.print_error_msg(e)
                 return None
 
         elif input_option == "2":
             try:
-                input_type = "Base64"
+                input_type = self.input_type_dict[2]
                 input_string = self.get_input(input_type=input_type)
-                base64 = Base64(results={}, data_type=input_type)
-                base64.print_base64_output(input_string=input_string)
+                Base64(
+                    results={},
+                    data_type=input_type).print_base64_output(
+                        input_string=input_string
+                )
             except Exception as e:
                 self.print_error_msg(e)
                 return None
 
         elif input_option == "3":
             try:
-                input_type = "Binary"
+                input_type = self.input_type_dict[3]
                 input_string = self.get_input(input_type=input_type)
-                binary = Binary(results={}, data_type=input_type)
-                binary.print_binary_output(input_string=input_string)
+                input_string = input_string.strip().replace(" ", "")
+                Binary(
+                    results={},
+                    data_type=input_type).print_binary_output(
+                        input_string=input_string
+                )
             except Exception as e:
                 self.print_error_msg(e)
                 return None
 
         elif input_option == "4":
             try:
-                input_type = "Decimal"
+                input_type = self.input_type_dict[4]
                 input_string = self.get_input(input_type=input_type)
-                decimal = Decimal(results={}, data_type=input_type)
-                decimal.print_decimal_output(input_string=input_string)
+                Decimal(
+                    results={},
+                    data_type=input_type).print_decimal_output(
+                        input_string=input_string
+                )
             except Exception as e:
                 self.print_error_msg(e)
                 return None
 
         elif input_option == "5":
             try:
-                input_type = "Hexadecimal"
+                input_type = self.input_type_dict[5]
                 input_string = self.get_input(input_type=input_type)
-                hex = Hexadecimal(results={}, data_type=input_type)
-                hex.print_hex_output(input_string=input_string)
+                Hexadecimal(
+                    results={},
+                    data_type=input_type).print_hex_output(
+                        input_string=input_string
+                )
             except Exception as e:
                 self.print_error_msg(e)
                 return None
 
         elif input_option == "6":
             try:
-                input_type = "Octal"
+                input_type = self.input_type_dict[6]
                 input_string = self.get_input(input_type=input_type)
-                octal = Octal(results={}, data_type=input_type)
-                octal.print_octal_output(input_string=input_string)
+                Octal(
+                    results={},
+                    data_type=input_type).print_octal_output(
+                        input_string=input_string
+                )
             except Exception as e:
                 self.print_error_msg(e)
                 return None
 
         elif input_option == "7":
             try:
-                input_type="Rotate String"
+                input_type = self.input_type_dict[7]
                 input_string = self.get_input(input_type=input_type)
                 n = self.get_cipher_shift_value()
-                rotate_string = RotateString(input_string=input_string, n=n)
-                rotate_string.rotate_string()
+                RotateString(input_string=input_string, n=n).rotate_string()
             except Exception as e:
                 self.print_error_msg(e)
                 return None
@@ -176,4 +203,3 @@ class Convert:
 
 if __name__ == "__main__":
     app = Convert().main()
-    # app.main()
