@@ -20,9 +20,6 @@ from rotate_string import RotateString
 from results import Results
 
 
-__author__ = "a/k/a bWlrZXNwb24="
-
-
 # Make the console object
 c = Console()
 install()
@@ -32,8 +29,9 @@ class Convert:
 
 
     def __init__(self):
+        self.author = "mikes"
         self.version = "0.5.5"
-        self.last_updated = "06-Apr-2026"
+        self.last_updated = "19-Jun-2026"
         self.input_type_dict = {
             1:"ASCII",
             2:"Base64",
@@ -94,7 +92,7 @@ class Convert:
             show_lines=False,
             pad_edge=True,
             padding=(0,5,0,1),
-            caption=f"Last Updated: {self.last_updated}",
+            caption=f"Written by: {self.author}. Last Updated: {self.last_updated}",
             caption_justify="left",
             expand=True)
 
@@ -108,7 +106,7 @@ class Convert:
 
         c.print(main_menu)
 
-        input_option = c.input("""[bold khaki3]\nENTER CHOICE >> """).lower().strip()
+        input_option = c.input("[bold khaki3]\nENTER CHOICE >> ").lower().strip()
 
         if input_option == "1":
             try:
