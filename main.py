@@ -30,6 +30,7 @@ install()
 
 class Convert:
 
+
     def __init__(self):
         self.version = "0.5.5"
         self.last_updated = "06-Apr-2026"
@@ -43,8 +44,10 @@ class Convert:
             7: "Rotate String"
         }
 
+
     def print_error_msg(self, e: str) -> str:
         return c.print(f"\n[red] There was an error during processing: {e}\n")
+
 
     def get_input(self, input_type: str) -> str:
         input_string = Prompt.ask(f"""[bright_white]
@@ -57,14 +60,17 @@ class Convert:
 # >> """)
 #         return choice.lower().strip()
 
+
     def get_cipher_shift_value(self) -> int:
         shift_value: int = c.input("""[bright_white]
 [+] Enter a numeric value for the shift you want to use >> """)
         return shift_value
 
+
     def no_valid_yn_option(self) -> None:
         c.print("""[bold bright_red]
 !!! You did not enter a valid choice (either "y" or "n"). Please try again.""")
+
 
     def main(self) -> None:
 
