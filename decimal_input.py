@@ -8,6 +8,7 @@ from results import Results
 
 class Decimal:
 
+
     def __init__(self, results, data_type):
         self.results = results
         self.data_type = data_type
