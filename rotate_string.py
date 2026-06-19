@@ -7,9 +7,11 @@ from results import Results
 
 class RotateString:
 
+
     def __init__(self, input_string: str, n: int):
         self.input_string = input_string
         self.n = int(n)
+
 
     def rotate_string(self) -> str:
         lc = string.ascii_lowercase
