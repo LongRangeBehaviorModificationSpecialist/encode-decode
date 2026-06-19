@@ -5,9 +5,11 @@ from results import Results
 
 class Octal:
 
+
     def __init__(self, results, data_type):
         self.results = results
         self.data_type = data_type
+
 
     def octal_to_binary(self, input_string: int) -> int:
         """Converts an octal string to binary.
@@ -27,6 +29,7 @@ class Octal:
             binary_results.append(binary_val)
         return " ".join(binary_results)
 
+
     def octal_to_decimal(self, input_string: int) -> int:
         """Converts an octal string to a decimal integer.
         Args:
@@ -37,6 +40,7 @@ class Octal:
         decimal_vals = [int(num, 8) for num in input_string.split()]
         decimal_string = " ".join(map(str, decimal_vals))
         return decimal_string
+
 
     def octal_to_hexadecimal(self, input_string: int) -> int:
         """Converts an octal string to hexadecimal.
@@ -50,6 +54,7 @@ class Octal:
         hex_string = " ".join(hex_number)
         return hex_string
 
+
     def make_data_dict(self, input_num: str) -> dict:
         self.results["type"] = "Octal"
         self.results["user_input"] = f"{input_num}"
@@ -60,6 +65,7 @@ class Octal:
         hexadecimal = self.octal_to_hexadecimal(input_num)
         self.results["Hexadecimal"] = f"{hexadecimal}"
         return self.results
+
 
     def print_octal_output(self, input_string: str) -> None:
         output = self.make_data_dict(input_string)
