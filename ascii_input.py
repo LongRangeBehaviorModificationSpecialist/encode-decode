@@ -10,6 +10,7 @@ from morse_code import MorseCode
 
 class ASCII:
 
+
     def __init__(self, results, data_type):
         self.results = results
         self.data_type = data_type
