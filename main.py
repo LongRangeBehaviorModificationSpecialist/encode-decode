@@ -35,13 +35,13 @@ class Convert:
         self.version = "0.5.5"
         self.last_updated = "06-Apr-2026"
         self.input_type_dict = {
-            1: "ASCII",
-            2: "Base64",
-            3: "Binary",
-            4: "Decimal",
-            5: "Hexadecimal",
-            6: "Octal",
-            7: "Rotate String"
+            1:"ASCII",
+            2:"Base64",
+            3:"Binary",
+            4:"Decimal",
+            5:"Hexadecimal",
+            6:"Octal",
+            7:"Rotate String"
         }
 
 
@@ -53,6 +53,7 @@ class Convert:
         input_string = Prompt.ask(f"""[bright_white]
 [+] Enter the data you want to convert from [bold khaki3]{input_type}[bright_white] """)
         return input_string
+
 
 #     def get_binary_data_format(self) -> str:
 #         choice: str = c.input("""[bright_white]
