@@ -11,6 +11,7 @@ class Binary:
         self.results = results
         self.data_type = data_type
 
+
     def _validate(self, input_string: str) -> str:
         """Validates that the input is a non-empty binary string.
         Returns the cleaned string.
@@ -26,6 +27,7 @@ class Binary:
             raise ValueError("Binary input must be only 0 or 1.")
         return input_string
 
+
     def binary_to_ascii(self, input_string: str) -> str:
         list = []
         for i in range(0, len(input_string), 8):
@@ -34,6 +36,7 @@ class Binary:
         # return ascii_combined_string
         ascii_string = "".join([chr(int(i, 2)) for i in list])
         return ascii_string
+
 
     def binary_to_base64(self, input_string: str) -> str:
         """Converts a binary string (0s and 1s) to Base64."""
@@ -50,11 +53,13 @@ class Binary:
         b64_result = base64.b64encode(byte_array).decode("utf-8")
         return b64_result
 
+
     def binary_to_decimal(self, input_string: str) -> int:
         """Converts a binary string to a decimal integer."""
         binary_string = self._validate(input_string)
         decimal_value = int(binary_string, 2)
         return decimal_value
+
 
     def binary_to_hexadecimal(self, input_string: str) -> str:
         """Converts a binary string to a hexadecimal integer."""
@@ -62,11 +67,13 @@ class Binary:
         hex_string = hex(int(binary_string, 2))[2:]
         return hex_string
 
+
     def binary_to_octal(self, input_string: str) -> str:
         """Converts a binary string to a octal integer."""
         binary_string = self._validate(input_string)
         octal_value = oct(int(binary_string, 2))[2:]
         return octal_value
+
 
     def make_data_dict(self, input_string: str) -> dict:
         self.results["type"] = "binary"
@@ -82,6 +89,7 @@ class Binary:
         octal = self.binary_to_octal(input_string)
         self.results["Octal"] = f"{octal}"
         return self.results
+
 
     def print_binary_output(self, input_string: str) -> None:
         output = self.make_data_dict(input_string)
