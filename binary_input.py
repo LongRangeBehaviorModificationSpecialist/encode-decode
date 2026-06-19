@@ -7,6 +7,7 @@ from results import Results
 class Binary:
     """Utility class for binary conversions."""
 
+
     def __init__(self, results, data_type):
         self.results = results
         self.data_type = data_type
