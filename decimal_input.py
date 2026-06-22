@@ -38,12 +38,9 @@ class Decimal:
         # results["ASCII"] = f"{ascii}"
         # base64 = Decimal.decimal_to_base64(self, input_string)
         # results["Decimal -> ASCII -> Base64"] = f"{base64}"
-        binary = self.decimal_to_binary(input_string)
-        self.results["Binary"] = f"{binary}"
-        hex = self.decimal_to_hexadecimal(input_string)
-        self.results["Hexadecimal"] = f"{hex}"
-        octal = self.decimal_to_octal(input_string)
-        self.results["Octal"] = f"{octal}"
+        self.results["Binary"] = f"{self.decimal_to_binary(input_string)}"
+        self.results["Hexadecimal"] = f"{self.decimal_to_hexadecimal(input_string)}"
+        self.results["Octal"] = f"{self.decimal_to_octal(input_string)}"
         return self.results
 
 

@@ -33,13 +33,13 @@ class Convert:
         self.version = "0.5.5"
         self.last_updated = "19-Jun-2026"
         self.input_type_dict = {
-            1:"ASCII",
-            2:"Base64",
-            3:"Binary",
-            4:"Decimal",
-            5:"Hexadecimal",
-            6:"Octal",
-            7:"Rotate String"
+            1: "ASCII",
+            2: "Base64",
+            3: "Binary",
+            4: "Decimal",
+            5: "Hexadecimal",
+            6: "Octal",
+            7: "Rotate String"
         }
 
 
@@ -51,13 +51,6 @@ class Convert:
         input_string = Prompt.ask(f"""[bright_white]
 [+] Enter the data you want to convert from [bold khaki3]{input_type}[bright_white] """)
         return input_string
-
-
-#     def get_binary_data_format(self) -> str:
-#         choice: str = c.input("""[bright_white]
-# Is the binary data separated with a space character every 8 bits (y/n)?
-# >> """)
-#         return choice.lower().strip()
 
 
     def get_cipher_shift_value(self) -> int:
@@ -91,7 +84,7 @@ class Convert:
             header_style="bold #2070b2",
             show_lines=False,
             pad_edge=True,
-            padding=(0,5,0,1),
+            padding=(0, 5, 0, 1),
             caption=f"Written by: {self.author}. Last Updated: {self.last_updated}",
             caption_justify="left",
             expand=True)
@@ -202,7 +195,7 @@ class Convert:
 
         else:
             c.print(f"""[bold bright_red]\n
-[+] Invalid choice entered. Please enter a valid option.""")
+[!] Invalid choice entered. Please enter a valid option.""")
             self.main()
 
 

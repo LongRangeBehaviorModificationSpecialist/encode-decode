@@ -57,16 +57,10 @@ class Hexadecimal:
     def hex_convert_all(self, input_string: str) -> None:
         self.results["type"] = "Hexadecimal"
         self.results["user_input"] = f"{input_string}"
-        ascii = self.hex_to_ascii(input_string)
-        self.results["ASCII"] = f"{ascii}"
-        base64 = self.hex_to_base64(input_string)
-        self.results["Base64"] = f"{base64}"
-        binary = self.hex_to_binary(input_string)
-        self.results["Binary"] = f"{binary}"
-        decimal = self.hex_to_decimal(input_string)
-        self.results["Decimal"] = f"{decimal}"
-        # morse_code = MorseCode.hex_to_morse_code(self, input_string)
-        # self.results["Morse Code"] = f"{morse_code}"
+        self.results["ASCII"] = f"{self.hex_to_ascii(input_string)}"
+        self.results["Base64"] = f"{self.hex_to_base64(input_string)}"
+        self.results["Binary"] = f"{self.hex_to_binary(input_string)}"
+        self.results["Decimal"] = f"{self.hex_to_decimal(input_string)}"
         return self.results
 
 

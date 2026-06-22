@@ -58,12 +58,9 @@ class Octal:
     def make_data_dict(self, input_num: str) -> dict:
         self.results["type"] = "Octal"
         self.results["user_input"] = f"{input_num}"
-        binary = self.octal_to_binary(input_num)
-        self.results["Binary"] = f"{binary}"
-        decimal = self.octal_to_decimal(input_num)
-        self.results["Decimal"] = f"{decimal}"
-        hexadecimal = self.octal_to_hexadecimal(input_num)
-        self.results["Hexadecimal"] = f"{hexadecimal}"
+        self.results["Binary"] = f"{self.octal_to_binary(input_num)}"
+        self.results["Decimal"] = f"{self.octal_to_decimal(input_num)}"
+        self.results["Hexadecimal"] = f"{self.octal_to_hexadecimal(input_num)}"
         return self.results
 
 

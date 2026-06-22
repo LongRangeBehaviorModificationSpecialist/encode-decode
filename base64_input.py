@@ -45,16 +45,11 @@ class Base64:
     def make_data_dict(self, input_string: str) -> None:
         self.results["type"] = "Base64"
         self.results["user_input"] = f"{input_string}"
-        ascii = self.base64_to_ascii(input_string)
-        self.results["ASCII"] = f"{ascii}"
-        binary = self.base64_to_binary(input_string)
-        self.results["Binary"] = f"{binary}"
-        decimal = self.base64_to_decimal(input_string)
-        self.results["Decimal"] = f"{decimal}"
-        hex = self.base64_to_hexadecimal(input_string)
-        self.results["Hexadecimal"] = f"{hex}"
-        morse_code = MorseCode.encode_morse_code(self, input_string)
-        self.results["Morse Code"] = f"{morse_code}"
+        self.results["ASCII"] = f"{self.base64_to_ascii(input_string)}"
+        self.results["Binary"] = f"{self.base64_to_binary(input_string)}"
+        self.results["Decimal"] = f"{self.base64_to_decimal(input_string)}"
+        self.results["Hexadecimal"] = f"{self.base64_to_hexadecimal(input_string)}"
+        self.results["Morse Code"] = f"{MorseCode.encode_morse_code(self, input_string)}"
         return self.results
 
 

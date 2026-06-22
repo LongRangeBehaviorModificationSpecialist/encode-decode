@@ -54,17 +54,11 @@ class ASCII:
     def make_data_dict(self, input_string: str) -> dict:
         self.results["type"] = "ascii"
         self.results["user_input"] = f"{input_string}"
-        # b64 = self.ascii_to_base64(input_string)
         self.results["Base64"] = f"{self.ascii_to_base64(input_string)}"
-        # binary = self.ascii_to_binary(input_string)
         self.results["Binary"] = f"{self.ascii_to_binary(input_string)}"
-        # decimal = self.ascii_to_decimal(input_string)
         self.results["Decimal"] = f"{self.ascii_to_decimal(input_string)}"
-        # hex = self.ascii_to_hexadecimal(input_string)
         self.results["Hexadecimal"] = f"{self.ascii_to_hexadecimal(input_string)}"
-        # rot13 = self.ascii_to_rot13(input_string)
         self.results["Rot13"] = f"{self.ascii_to_rot13(input_string)}"
-        # morse_code = MorseCode.encode_morse_code(self, input_string)
         self.results["Morse Code"] = f"{MorseCode.encode_morse_code(self, input_string)}"
         return self.results
 

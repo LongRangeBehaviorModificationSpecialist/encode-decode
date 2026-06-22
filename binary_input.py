@@ -19,7 +19,6 @@ class Binary:
         """
         if not isinstance(input_string, str):
             raise TypeError("Input must be a string.")
-        # binary_string = input_string.strip().replace(" ", "")
         # Check for empty input value
         if not input_string:
             raise ValueError("Input can not be empty.")
@@ -50,7 +49,7 @@ class Binary:
         for i in range(0, len(binary_string), 8):
             byte = binary_string[i:i+8]
             byte_array.append(int(byte, 2))
-        # Encode to Base64
+        # Encode to base64
         b64_result = base64.b64encode(byte_array).decode("utf-8")
         return b64_result
 
@@ -79,16 +78,11 @@ class Binary:
     def make_data_dict(self, input_string: str) -> dict:
         self.results["type"] = "binary"
         self.results["user_input"] = f"{input_string}"
-        ascii = self.binary_to_ascii(input_string)
-        self.results["ASCII"] = f"{ascii}"
-        base64 = self.binary_to_base64(input_string)
-        self.results["Base64"] = f"{base64}"
-        decimal = self.binary_to_decimal(input_string)
-        self.results["Decimal"] = f"{decimal}"
-        hexadecimal = self.binary_to_hexadecimal(input_string)
-        self.results["Hexadecimal"] = f"{hexadecimal}"
-        octal = self.binary_to_octal(input_string)
-        self.results["Octal"] = f"{octal}"
+        self.results["ASCII"] = f"{self.binary_to_ascii(input_string)}"
+        self.results["Base64"] = f"{self.binary_to_base64(input_string)}"
+        self.results["Decimal"] = f"{self.binary_to_decimal(input_string)}"
+        self.results["Hexadecimal"] = f"{self.binary_to_hexadecimal(input_string)}"
+        self.results["Octal"] = f"{self.binary_to_octal(input_string)}"
         return self.results
 
 
