@@ -8,12 +8,12 @@ from results import Results
 from morse_code import MorseCode
 
 
-class ASCII:
+class Ascii:
 
 
     def __init__(self, results, data_type):
-        self.results = results
         self.data_type = data_type
+        self.results = results
 
 
     def ascii_to_base64(self, input_string: str) -> str:
@@ -66,5 +66,5 @@ class ASCII:
     def print_ascii_output(self, input_string: str) -> None:
         output = self.make_data_dict(input_string)
         Results.print_results_table(self,
-                                    format=self.data_type,
+                                    data_type=self.data_type,
                                     results_dict=output)

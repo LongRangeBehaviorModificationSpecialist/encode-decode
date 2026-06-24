@@ -6,9 +6,9 @@ from results import Results
 class Octal:
 
 
-    def __init__(self, results, data_type):
-        self.results = results
+    def __init__(self, data_type, results):
         self.data_type = data_type
+        self.results = results
 
 
     def octal_to_binary(self, input_string: int) -> int:
@@ -67,5 +67,5 @@ class Octal:
     def print_octal_output(self, input_string: str) -> None:
         output = self.make_data_dict(input_string)
         Results.print_results_table(self,
-                                    format=self.data_type,
+                                    data_type=self.data_type,
                                     results_dict=output)

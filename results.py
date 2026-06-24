@@ -5,6 +5,7 @@ from rich.align import Align
 from rich.console import Console, Group
 from rich.columns import Columns
 from rich.panel import Panel
+from rich.prompt import Prompt
 from rich.table import Table
 from rich.text import Text
 
@@ -14,21 +15,27 @@ c = Console()
 
 class Results:
 
+
+    def __init__(self, data_type, results_dict: dict):
+        self.data_type = data_type
+        self.results_dict = results_dict
+
+
     def set_output_type(self) -> str:
-        output_type: str = c.input(f"""[bright_white]
-Enter output format ("p" = Panels or "t" = Table) >>> """)
+        output_type = Prompt.ask(f"""[bright_white]
+Enter output format ("p" = Panels or "t" = Table) """)
         return output_type.strip().lower()
 
 
-    def print_results(self, results: str) -> str:
-        output: str = c.print(f"""[bold blue]
-RESULTS OF STRING ROTATION
---------------------------\n
-[bold yellow2]  {results}\n""")
+    def print_rotation_results(self, results: str) -> str:
+        output = c.print(f"""[bold blue]
+\nString Rotation Results
+-----------------------\n
+[bold khaki3]{results}\n""")
         return output
 
 
-    def print_results_table(self, format, results_dict: dict) -> None:
+    def print_results_table(self, data_type, results_dict: dict) -> None:
         results_table = Table(
             box=box.HORIZONTALS,
             show_header=True,
@@ -50,8 +57,8 @@ RESULTS OF STRING ROTATION
             )
 
         results_table.add_row(
-            f"[bold green3]Input Value ({format})",
-            f"""[bold green3]'{results_dict["user_input"]}'"""
+            f"[bold green3]Input Value ({data_type})",
+            f"[bold green3]\'{results_dict['user_input']}\'"
         )
 
         new_dict = {key: value for key, value in results_dict.items() if key not in ["type", "user_input"]}

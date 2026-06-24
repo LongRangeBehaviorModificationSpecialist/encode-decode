@@ -16,11 +16,10 @@ class RotateString:
     def rotate_string(self) -> str:
         lc = string.ascii_lowercase
         uc = string.ascii_uppercase
-        # n = int(n)
         trans = str.maketrans(
             lc + uc, lc[self.n:] + lc[:self.n] + uc[self.n:] + uc[:self.n])
         rotated_string = str.translate(self.input_string, trans)
-        Results.print_results(self, results=rotated_string)
+        Results.print_rotation_results(self, results=rotated_string)
 
 
 """

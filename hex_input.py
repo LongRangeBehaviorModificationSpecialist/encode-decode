@@ -9,9 +9,9 @@ from morse_code import MorseCode
 class Hexadecimal:
 
 
-    def __init__(self, results, data_type):
-        self.results = results
+    def __init__(self, data_type, results):
         self.data_type = data_type
+        self.results = results
 
 
     def hex_to_ascii(self, input_string: str) -> str:
@@ -67,5 +67,5 @@ class Hexadecimal:
     def print_hex_output(self, input_string: str) -> None:
         output = self.hex_convert_all(input_string)
         Results.print_results_table(self,
-                                    format=self.data_type,
+                                    data_type=self.data_type,
                                     results_dict=output)

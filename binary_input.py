@@ -8,9 +8,9 @@ class Binary:
     """Utility class for binary conversions."""
 
 
-    def __init__(self, results, data_type):
-        self.results = results
+    def __init__(self, data_type, results):
         self.data_type = data_type
+        self.results = results
 
 
     def _validate(self, input_string: str) -> str:
@@ -57,15 +57,22 @@ class Binary:
     def binary_to_decimal(self, input_string: str) -> int:
         """Converts a binary string to a decimal integer."""
         binary_string = self._validate(input_string)
-        decimal_value = int(binary_string, 2)
+        decimal_value = f"{int(binary_string, 2):,}"
         return decimal_value
 
 
     def binary_to_hexadecimal(self, input_string: str) -> str:
         """Converts a binary string to a hexadecimal integer."""
         binary_string = self._validate(input_string)
-        hex_string = hex(int(binary_string, 2))[2:]
-        return hex_string
+        decimal_value = int(binary_string, 2)
+        hex_string = f"{decimal_value:X}"
+
+        if len(hex_string) % 2 !=0:
+            hex_string = "0" + hex_string
+
+        formatted_hex = " ".join(hex_string[i:i+2] for i in range(0, len(hex_string), 2))
+
+        return formatted_hex
 
 
     def binary_to_octal(self, input_string: str) -> str:
@@ -89,5 +96,5 @@ class Binary:
     def print_binary_output(self, input_string: str) -> None:
         output = self.make_data_dict(input_string)
         Results.print_results_table(self,
-                                    format=self.data_type,
+                                    data_type=self.data_type,
                                     results_dict=output)
