@@ -23,14 +23,14 @@ class Base64:
     def base64_to_binary(self, input_string: str) -> str:
         """Convert BASE64 string to BINARY string."""
         binary_string = " ".join(
-            format(ord(i), "b").zfill(8) for i in base64.b64decode(
+            format(ord(c), "b").zfill(8) for c in base64.b64decode(
                 input_string).decode())
         return binary_string
 
 
     def base64_to_decimal(self, input_string: str) -> str:
         """Convert BASE64 string to DECIMAL string."""
-        d = [ord(i) for i in base64.b64decode(input_string).decode()]
+        d = [ord(c) for c in base64.b64decode(input_string).decode()]
         dec_result = " ".join(str(x) for x in d)
         return dec_result
 
