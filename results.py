@@ -76,8 +76,9 @@ Enter output format ("p" = Panels or "t" = Table) """)
             expand=False,
             style="none",
             border_style="none",
-            title=f"""Convert from {results_dict["type"].upper()} Input""",
+            title=f"Convert from {results_dict['type'].upper()} Input",
             safe_box=True
         )
 
+        c.print("\n")
         c.print(inner_panel)

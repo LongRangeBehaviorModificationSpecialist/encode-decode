@@ -167,16 +167,12 @@ class Convert:
 
 
         elif input_option == "6":
-            try:
-                input_string = self.get_input()
-                Hexadecimal(
-                    results={},
-                    data_type=self.input_type_dict[6]).print_hex_output(
-                        input_string=input_string
-                )
-            except Exception as e:
-                self.print_error_msg(e)
-                return None
+            input_string = self.get_input()
+            Hexadecimal(
+                results={},
+                data_type=self.input_type_dict[6]).print_hex_output(
+                    input_string=input_string
+            )
 
         elif input_option == "7":
             try:

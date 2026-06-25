@@ -5,11 +5,11 @@ class MorseCode:
     """Python program to implement Morse Code Translator
 
     VARIABLE KEY
-    "cipher" -> "stores the morse translated form of the english string"
-    "decipher" -> "stores the english translated form of the morse string"
-    "citext" -> "stores morse code of a single character"
-    "i" -> "keeps count of the spaces between morse characters"
-    "message" -> "stores the string to be encoded or decoded"
+    "cipher"     -> "stores the morse translated form of the english string"
+    "decipher"   -> "stores the english translated form of the morse string"
+    "ciphertext" -> "stores morse code of a single character"
+    "i"          -> "keeps count of the spaces between morse characters"
+    "message"    -> "stores the string to be encoded or decoded"
     """
 
     # Dictionary representing the morse code chart
@@ -59,14 +59,14 @@ class MorseCode:
         # Extra space added at the end to access the last morse code
         input_string += " "
         decipher = ""
-        citext = ""
+        ciphertext = ""
         for c in input_string:
             # Checks for space
             if (c != " "):
                 # Counter to keep track of space
                 i = 0
                 # Storing morse code of a single character
-                citext += c
+                ciphertext += c
             # In case of space
             else:
                 # If i = 1 that indicates a new character
@@ -79,6 +79,6 @@ class MorseCode:
                     # Accessing the keys using their values (reverse of encryption)
                     decipher += list(
                         MorseCode.MORSE_CODE_DICT.keys())[list(
-                            MorseCode.MORSE_CODE_DICT.values()).index(citext)]
-                    citext = ""
+                            MorseCode.MORSE_CODE_DICT.values()).index(ciphertext)]
+                    ciphertext = ""
         return decipher
