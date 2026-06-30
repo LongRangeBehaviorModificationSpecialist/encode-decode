@@ -30,8 +30,8 @@ class Convert:
 
     def __init__(self):
         self.author = "mikes"
-        self.version = "0.5.5"
-        self.last_updated = "19-Jun-2026"
+        self.version = "0.5.6"
+        self.last_updated = "30-Jun-2026"
         self.input_type_dict = {
             1: "Ascii",
             2: "Base64",
@@ -40,12 +40,13 @@ class Convert:
             5: "Decimal (String)",
             6: "Hexadecimal",
             7: "Octal",
-            8: "String"
+            8: "Morse Code"
         }
 
 
     def print_error_msg(self, e: str) -> str:
-        return c.print(f"\n[red] There was an error during processing: {e}\n")
+        return c.print(f"""[bold bright_red]
+[!] There was an error during processing: {e}\n""")
 
 
     def get_input(self) -> str:
@@ -62,7 +63,7 @@ class Convert:
 
     def no_valid_yn_option(self) -> None:
         c.print("""[bold bright_red]
-!!! You did not enter a valid choice ("y" or "n"). Please try again.""")
+[!] You did not enter a valid choice ("y" or "n"). Please try again.""")
 
 
     def main(self) -> None:
@@ -76,7 +77,8 @@ class Convert:
             6: "From Hexadecimal",
             7: "From Octal (Integer)",
             8: "Rotate String (Caesar Cipher)",
-            9: "Exit Program"
+            9: "From Morse Code -> ASCII",
+            "Q": "Exit Program"
         }
 
         main_menu = Table(
@@ -103,88 +105,49 @@ class Convert:
 
         input_option = Prompt.ask("[khaki3]\nENTER CHOICE").lower().strip()
 
+
         if input_option == "1":
-            try:
-                input_string = self.get_input()
-                Ascii(
-                    results={},
-                    data_type=self.input_type_dict[1]).print_ascii_output(
-                        input_string=input_string
-                )
-            except Exception as e:
-                self.print_error_msg(e)
-                return None
+            input_string = self.get_input()
+            Ascii(input_string=input_string, results={}).print_ascii_output()
+
 
         elif input_option == "2":
-            try:
-                input_string = self.get_input()
-                Base64(
-                    results={},
-                    data_type=self.input_type_dict[2]).print_base64_output(
-                        input_string=input_string
-                )
-            except Exception as e:
-                self.print_error_msg(e)
-                return None
+            input_string = self.get_input()
+            Base64(input_string=input_string, results={}).print_base64_output()
+
 
         elif input_option == "3":
-            try:
-                input_string = self.get_input()
-                input_string = input_string.strip().replace(" ", "")
-                Binary(
-                    results={},
-                    data_type=self.input_type_dict[3]).print_binary_output(
-                        input_string=input_string
-                )
-            except Exception as e:
-                self.print_error_msg(e)
-                return None
+            input_string = self.get_input()
+            Binary(input_string=input_string, results={}).print_binary_output()
+
 
         elif input_option == "4":
-            try:
-                input_string = self.get_input()
-                DecimalInteger(
-                    results={},
-                    data_type=self.input_type_dict[4]).print_decimal_integer_output(
-                        input_string=input_string
-                )
-            except Exception as e:
-                self.print_error_msg(e)
-                return None
+            input_string = self.get_input()
+            DecimalInteger(
+                input_string=input_string,
+                results={}).print_decimal_integer_output()
+
 
         elif input_option == "5":
-            try:
-                input_string = self.get_input()
-                DecimalString(
-                    results={},
-                    data_type=self.input_type_dict[5]).print_decimal_string_output(
-                        input_string=input_string
-                    )
-
-            except Exception as e:
-                self.print_error_msg(e)
-                return None
+            input_string = self.get_input()
+            DecimalString(
+                input_string=input_string,
+                results={}).print_decimal_string_output()
 
 
         elif input_option == "6":
             input_string = self.get_input()
             Hexadecimal(
-                results={},
-                data_type=self.input_type_dict[6]).print_hex_output(
-                    input_string=input_string
-            )
+                input_string=input_string,
+                results={}).print_hex_output()
+
 
         elif input_option == "7":
-            try:
-                input_string = self.get_input()
-                Octal(
-                    results={},
-                    data_type=self.input_type_dict[7]).print_octal_output(
-                        input_string=input_string
-                )
-            except Exception as e:
-                self.print_error_msg(e)
-                return None
+            input_string = self.get_input()
+            Octal(
+                input_string=input_string,
+                results={}).print_octal_output()
+
 
         elif input_option == "8":
             try:
@@ -195,7 +158,15 @@ class Convert:
                 self.print_error_msg(e)
                 return None
 
+
         elif input_option == "9":
+            input_string = self.get_input()
+            MorseCode(
+                input_string=input_string,
+                results={}).print_morse_code_output()
+
+
+        elif input_option == "q":
             sys.exit(0)
 
         else:
@@ -205,4 +176,5 @@ class Convert:
 
 
 if __name__ == "__main__":
-    app = Convert().main()
+    # app = Convert().main()
+    Convert().main()

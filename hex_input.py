@@ -8,7 +8,9 @@ from morse_code import MorseCode
 
 
 def handle_exceptions(func):
-    """Defining the error handling decorator"""
+    """
+    Defining the error handling decorator.
+    """
     # Preserves the original function's name and docstring
     @functools.wraps(func)
     def wrapper(self, *args, **kwargs):
@@ -31,53 +33,55 @@ def handle_exceptions(func):
 class Hexadecimal:
 
 
-    def __init__(self, data_type, results):
-        self.data_type = data_type
+    def __init__(self, input_string: str, results: dict):
+        self.input_string = input_string
         self.results = results
 
 
-    def clean_hex_input(self, input_string: str) -> str:
-        hex_str = input_string.strip().lower()
+    def clean_hex_input(self) -> str:
+        hex_str = self.input_string.strip().lower()
         hex_str = hex_str.replace(" ", "")
-
         if hex_str.startswith("0x"):
             hex_str = hex_str[2:]
-
         return hex_str
 
 
     @handle_exceptions
-    def hex_to_ascii(self, input_string: str) -> str:
+    def hex_to_ascii(self) -> str:
+        """
+        Converts a hexadecimal string to its representation in ascii
+        characters.
+        """
+        # hex_str = self.clean_hex_input(input_string)
+        # raw_bytes = bytes.fromhex(hex_str)
+        # return raw_bytes.decode("utf-8")
 
-        hex_str = self.clean_hex_input(input_string)
+        return bytes.fromhex(self.clean_hex_input(self.input_string)).decode("utf-8")
+
+
+    @handle_exceptions
+    def hex_to_base64(self) -> str:
+        """
+        Converts a hexadecimal string to its base64 representation.
+        """
+        hex_str = self.clean_hex_input(self.input_string)
         raw_bytes = bytes.fromhex(hex_str)
-        ascii_string = raw_bytes.decode("utf-8")
-
-        return ascii_string
+        return base64.b64encode(raw_bytes).decode("utf-8")
 
 
     @handle_exceptions
-    def hex_to_base64(self, input_string: str) -> str:
-
-        hex_str = self.clean_hex_input(input_string)
-        raw_bytes = bytes.fromhex(hex_str)
-        base64_string = base64.b64encode(raw_bytes).decode("utf-8")
-
-        return base64_string
-
-
-    @handle_exceptions
-    def hex_to_binary(self, input_string: str) -> str:
-
-        hex_str = self.clean_hex_input(input_string)
-        binary_string = " ".join(f"{b:08b}" for b in bytes.fromhex(hex_str))
-
-        return binary_string
+    def hex_to_binary(self) -> str:
+        """
+        Converts a hexadecimal string to its binary representation.
+        """
+        hex_str = self.clean_hex_input(self.input_string)
+        return " ".join(f"{b:08b}" for b in bytes.fromhex(hex_str))
 
 
     @handle_exceptions
-    def hex_to_decimal(self, input_string: str) -> str:
-        """Converts a hex string to signed and unsigned representations.
+    def hex_to_decimal(self) -> str:
+        """
+        Converts a hex string to signed and unsigned representations.
 
         Args:
             hex_str (str): Hex string (e.g. 'FFFF', '0xFF').
@@ -85,8 +89,7 @@ class Hexadecimal:
         Returns:
             dict: Contains 'signed' and 'unsigned' representations.
         """
-
-        hex_str = self.clean_hex_input(input_string)
+        hex_str = self.clean_hex_input(self.input_string)
 
         unsigned_value = int(hex_str, 16)
         bit_length = len(hex_str) * 4
@@ -104,30 +107,26 @@ class Hexadecimal:
 
 
     @handle_exceptions
-    def hex_to_morse_code(self, input_string: str) -> str:
-        hex_str = self.clean_hex_input(input_string)
-        morse_code_string = MorseCode.encode_morse_code(self,
-            input_string=hex_str)
-        return morse_code_string
+    def hex_to_morse_code(self) -> str:
+        hex_str = self.clean_hex_input(self.input_string)
+        return MorseCode.encode_morse_code(self, input_string=hex_str)
 
 
     @handle_exceptions
-    def hex_convert_all(self, input_string: str) -> None:
+    def hex_convert_all(self) -> dict:
         self.results["type"] = "Hexadecimal"
-        self.results["user_input"] = f"{input_string}"
-        self.results["ASCII"] = f"{self.hex_to_ascii(input_string)}"
-        self.results["Base64"] = f"{self.hex_to_base64(input_string)}"
-        self.results["Binary"] = f"{self.hex_to_binary(input_string)}"
+        self.results["user_input"] = f"{self.input_string}"
+        self.results["Ascii"] = f"{self.hex_to_ascii()}"
+        self.results["Base64"] = f"{self.hex_to_base64()}"
+        self.results["Binary"] = f"{self.hex_to_binary()}"
 
-        for key, value in self.hex_to_decimal(input_string).items():
+        for key, value in self.hex_to_decimal(self.input_string).items():
             self.results[f"{key}"] = f"{value}"
 
         return self.results
 
 
     @handle_exceptions
-    def print_hex_output(self, input_string: str) -> None:
-        results_dict = self.hex_convert_all(input_string)
-        Results.print_results_table(self,
-                                    data_type=self.data_type,
-                                    results_dict=results_dict)
+    def print_hex_output(self) -> None:
+        results_dict = self.hex_convert_all()
+        Results.print_results_table(self, results_dict=results_dict)

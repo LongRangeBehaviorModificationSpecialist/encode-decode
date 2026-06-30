@@ -1,5 +1,4 @@
 # !/usr/bin/env python3
-# DLU : 24-Jun-2026
 
 import base64
 
@@ -12,59 +11,71 @@ from results import Results
 c = Console()
 install()
 
+
 class DecimalInteger:
 
 
-    def __init__(self, data_type, results):
-        self.data_type = data_type
+    def __init__(self, input_string: str, results: dict):
+        parsed_string = input_string.replace(",", "")
+        self.number = int(parsed_string)
         self.results = results
 
 
-    def decimal_to_binary(self, input_string: int) -> str:
-        """Convert the DECIMAL number string to BINARY number."""
-        binary_string = "{0:b}".format(int(input_string))
-        return binary_string
+    def format_input(self):
+        if "," in self.input_string:
+            self.input_string = self.input_string.replace(",", "")
+        return int(self.input_string)
 
 
-    def decimal_to_hexadecimal(self, input_string: int) -> str:
-        """Convert the DECIMAL number string to HEXADECIMAL number."""
-        hex_string = hex(int(input_string))
-        return hex_string
+    def decimal_to_binary(self) -> str:
+        """
+        Convert the decimal number to binary number.
+        """
+        return "{0:b}".format(self.number)
 
 
-    def decimal_to_octal(self, input_string: int) -> str:
-        """Convert the DECIMAL number string to OCTAL number."""
-        octal_string = oct(int(input_string))
-        return octal_string
+    def decimal_to_hexadecimal(self) -> str:
+        """
+        Convert the decimal number to hexadecimal number.
+        """
+        hex_str = hex(self.number)[2:]
+        if len(hex_str) % 2 != 0:
+            hex_str = "0" + hex_str
+        pairs = [hex_str[i:i+2] for i in range(0, len(hex_str), 2)]
+        return "0x " + " ".join(pairs).upper()
 
 
-    def make_data_dict(self, input_string: int) -> None:
-        self.results["type"] = "Decimal (Integer)"
-        self.results["user_input"] = f"{input_string}"
-        self.results["Binary"] = f"{self.decimal_to_binary(input_string)}"
-        self.results["Hexadecimal"] = f"{self.decimal_to_hexadecimal(input_string)}"
-        self.results["Octal"] = f"{self.decimal_to_octal(input_string)}"
+    def decimal_to_octal(self) -> str:
+        """
+        Convert the decimal number to octal number.
+        """
+        return oct(self.number)
+
+
+    def make_data_dict(self) -> None:
+        self.results["type"] = "Decimal (integer)"
+        self.results["user_input"] = f"{self.number}"
+        self.results["Binary"] = f"{self.decimal_to_binary()}"
+        self.results["Hexadecimal"] = f"{self.decimal_to_hexadecimal()}"
+        self.results["Octal"] = f"{self.decimal_to_octal()}"
         return self.results
 
 
-    def print_decimal_integer_output(self, input_string: str) -> None:
-        output = self.make_data_dict(input_string)
-        Results.print_results_table(self,
-                                    format=self.data_type,
-                                    results_dict=output)
+    def print_decimal_integer_output(self) -> None:
+        results_dict = self.make_data_dict()
+        Results.print_results_table(self, results_dict=results_dict)
 
 
 class DecimalString:
 
-    def __init__(self, results, data_type):
+    def __init__(self, input_string: str, results: dict):
+        self.input_string = input_string
         self.results = results
-        self.data_type = data_type
 
 
-    def decimal_to_ascii(self, input_string: int) -> str:
+    def decimal_to_ascii(self) -> str:
         try:
-            ascii_string = "".join(chr(int(c)) for c in input_string.split())
-            return ascii_string
+            return "".join(chr(int(c)) for c in self.input_string.split())
 
         except ValueError:
             c.print("[bold bright_red]Error: Please ensure the input only \
@@ -74,22 +85,19 @@ contains numbers separated by spaces.")
 to be a valid ascii character.")
 
 
-    def decimal_to_base64(self, input_string: str) -> str:
-        byte_data = bytes(int(c) for c in input_string.split())
-        base64_string = base64.b64encode(byte_data).decode("utf-8")
-        return base64_string
+    def decimal_to_base64(self) -> str:
+        byte_data = bytes(int(c) for c in self.input_string.split())
+        return base64.b64encode(byte_data).decode("utf-8")
 
 
-    def make_data_dict(self, input_string: int) -> None:
+    def make_data_dict(self) -> None:
         self.results["type"] = "Decimal (String)"
-        self.results["user_input"] = f"{input_string}"
-        self.results["ASCII"] = f"{self.decimal_to_ascii(input_string)}"
-        self.results["Base64"] = f"{self.decimal_to_base64(input_string)}"
+        self.results["user_input"] = f"{self.input_string}"
+        self.results["Ascii"] = f"{self.decimal_to_ascii()}"
+        self.results["Base64"] = f"{self.decimal_to_base64()}"
         return self.results
 
 
-    def print_decimal_string_output(self, input_string: str) -> None:
-        output = self.make_data_dict(input_string)
-        Results.print_results_table(self,
-                                    data_type=self.data_type,
-                                    results_dict=output)
+    def print_decimal_string_output(self) -> None:
+        results_dict = self.make_data_dict()
+        Results.print_results_table(self, results_dict=results_dict)
