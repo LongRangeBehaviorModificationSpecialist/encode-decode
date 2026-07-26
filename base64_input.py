@@ -54,7 +54,9 @@ class Base64:
         self.results["Binary"] = f"{self.base64_to_binary()}"
         self.results["Decimal"] = f"{self.base64_to_decimal()}"
         self.results["Hexadecimal"] = f"{self.base64_to_hexadecimal()}"
-        self.results["Morse Code"] = f"{MorseCode.encode_morse_code(self, self.input_string)}"
+        self.results["Morse Code"] = (
+            f"{MorseCode.encode_morse_code(self, self.input_string)}"
+        )
         return self.results
 
 
