@@ -1,4 +1,5 @@
 # !/usr/bin/env python3
+# DLU : 26-Jul-2026
 
 from rich.console import Console
 from rich.traceback import install
@@ -11,8 +12,7 @@ install()
 
 
 class MorseCode:
-    """
-    Python program to implement Morse Code Translator
+    """Python program to implement Morse Code Translator
 
         VARIABLE KEY
         "cipher"     -> "stores the morse translated form of the english string"
@@ -43,9 +43,7 @@ class MorseCode:
 
 
     def is_valid_morse(self) -> str:
-        """
-        Validates that the input contains valid morse code characters.
-        """
+        """Validates that the input contains valid morse code characters."""
         if not self.input_string or self.input_string.isspace():
             return False
         allowed_characters = {".", "-", " "}
@@ -56,8 +54,7 @@ class MorseCode:
 
 
     def encode_morse_code(self) -> str:
-        """
-        Conversion from Morse Code value to ascii
+        """Conversion from Morse Code value to ascii
 
         Args:
             str: ascii encoded string
@@ -81,8 +78,7 @@ class MorseCode:
 
 
     def decode_morse_code(self) -> str:
-        """
-        Conversion from Morse Code value to ascii.
+        """Conversion from Morse Code value to ascii.
 
         Args:
             str: Morse code string to convert
@@ -119,9 +115,11 @@ class MorseCode:
                         ciphertext = ""
             return decipher
         else:
-            c.print("""[red]
+            c.print(
+                """[bright_red]
 [!] The data containes not valid morse code characters. Check the data and \
-try again.""")
+try again."""
+            )
 
 
     def make_data_dict(self) -> dict:
