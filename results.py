@@ -1,5 +1,5 @@
 # !/usr/bin/env python3
-#DLU : 26-Jul-2026
+# DLU : 26-Jul-2026
 
 from rich import box
 from rich.align import Align
@@ -23,10 +23,10 @@ class Results:
     def print_rotation_results(self, results: str) -> str:
         output = c.print(
             f"""[bold blue]
-\nString Rotation Results
------------------------\n
+String Rotation Results
+-----------------------
 [bold khaki3]{results}\n"""
-            )
+        )
         return output
 
 
@@ -35,22 +35,26 @@ class Results:
             box=box.HORIZONTALS,
             show_header=True,
             header_style="bold #2070b2",
-            show_lines=True)
+            show_lines=True
+        )
 
         results_table.add_column(
             Text("Format", justify="left"),
                 justify="left",
-                no_wrap=False)
+                no_wrap=False
+        )
 
         results_table.add_column(
             Text("Encoded String", justify="left"),
                 justify="left",
                 ratio=2,
-                no_wrap=False)
+                no_wrap=False
+        )
 
         results_table.add_row(
             f"[bold green3]Input Value",
-            f"[bold green3]\'{results_dict['user_input']}\'")
+            f"[bold green3]\'{results_dict['user_input']}\'"
+        )
 
         new_dict = {key: value for key, value in results_dict.items() if key not in ["type", "user_input"]}
 
@@ -58,7 +62,8 @@ class Results:
             results_table.add_row(
                 f"[bright_white]{key}",
                 f"[khaki1]{value}",
-                end_section=True)
+                end_section=True
+            )
 
         inner_panel = Panel(
             Align.center(Group(Align.left(results_table)), vertical="middle"),
@@ -67,7 +72,8 @@ class Results:
             style="none",
             border_style="none",
             title=f"Input Data Type : {results_dict['type']}",
-            safe_box=True)
+            safe_box=True
+        )
 
         c.print("\n")
         c.print(inner_panel)
