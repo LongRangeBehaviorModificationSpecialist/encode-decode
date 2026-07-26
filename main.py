@@ -1,4 +1,5 @@
 # !/usr/bin/env python3
+# DLU : 26-Jul-2026
 
 import sys
 
@@ -46,7 +47,7 @@ class Convert:
 
     def print_error_msg(self, e: str) -> str:
         return c.print(
-            f"""[bold bright_red]
+            f"""[bright_red]
 [!] There was an error during processing: {e}\n"""
             )
 
@@ -90,7 +91,7 @@ class Convert:
         }
 
         main_menu = Table(
-            title=f"[bold dodger_blue1]\nDATA CONVERTER & ENCODER, v.{self.version}",
+            title=f"[dodger_blue1]\nDATA CONVERTER & ENCODER, v.{self.version}",
             box=box.HEAVY_HEAD,
             show_header=False,
             header_style="bold #2070b2",
@@ -112,61 +113,79 @@ class Convert:
 
         c.print(main_menu)
 
-        input_option = Prompt.ask("[khaki3]\nENTER CHOICE").lower().strip()
+        input_option = (
+            Prompt.ask(
+"""[khaki3]ENTER CHOICE"""
+            )
+            .lower()
+            .strip()
+        )
 
 
         if input_option == "1":
             input_string = self.get_input()
-            Ascii(input_string=input_string, results={}).print_ascii_output()
+            Ascii(
+                input_string=input_string,
+                results={}
+            ).print_ascii_output()
 
 
         elif input_option == "2":
             input_string = self.get_input()
             Base64(
                 input_string=input_string,
-                results={}).print_base64_output()
+                results={}
+            ).print_base64_output()
 
 
         elif input_option == "3":
             input_string = self.get_input()
             Binary(
                 input_string=input_string,
-                results={}).print_binary_output()
+                results={}
+            ).print_binary_output()
 
 
         elif input_option == "4":
             input_string = self.get_input()
             DecimalInteger(
                 input_string=input_string,
-                results={}).print_decimal_integer_output()
+                results={}
+            ).print_decimal_integer_output()
 
 
         elif input_option == "5":
             input_string = self.get_input()
             DecimalString(
                 input_string=input_string,
-                results={}).print_decimal_string_output()
+                results={}
+            ).print_decimal_string_output()
 
 
         elif input_option == "6":
             input_string = self.get_input()
             Hexadecimal(
                 input_string=input_string,
-                results={}).print_hex_output()
+                results={}
+            ).print_hex_output()
 
 
         elif input_option == "7":
             input_string = self.get_input()
             Octal(
                 input_string=input_string,
-                results={}).print_octal_output()
+                results={}
+            ).print_octal_output()
 
 
         elif input_option == "8":
             try:
                 input_string = self.get_input()
                 n = self.get_cipher_shift_value()
-                RotateString(input_string=input_string, n=n).rotate_string()
+                RotateString(
+                    input_string=input_string,
+                    n=n
+                ).rotate_string()
             except Exception as e:
                 self.print_error_msg(e)
                 return None
@@ -176,7 +195,8 @@ class Convert:
             input_string = self.get_input()
             MorseCode(
                 input_string=input_string,
-                results={}).print_morse_code_output()
+                results={}
+            ).print_morse_code_output()
 
 
         elif input_option == "q":
@@ -184,7 +204,7 @@ class Convert:
 
         else:
             c.print(
-                f"""[bold bright_red]\n
+                f"""[bright_red]\n
 [!] Invalid choice entered. Please enter a valid option."""
             )
             self.main()
