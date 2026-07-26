@@ -1,4 +1,5 @@
 # !/usr/bin/env python3
+# DLU : 26-Jul-2026
 
 import base64
 
@@ -28,16 +29,12 @@ class DecimalInteger:
 
 
     def decimal_to_binary(self) -> str:
-        """
-        Convert the decimal number to binary number.
-        """
+        """Convert the decimal number to binary number."""
         return "{0:b}".format(self.number)
 
 
     def decimal_to_hexadecimal(self) -> str:
-        """
-        Convert the decimal number to hexadecimal number.
-        """
+        """Convert the decimal number to hexadecimal number."""
         hex_str = hex(self.number)[2:]
         if len(hex_str) % 2 != 0:
             hex_str = "0" + hex_str
@@ -46,9 +43,7 @@ class DecimalInteger:
 
 
     def decimal_to_octal(self) -> str:
-        """
-        Convert the decimal number to octal number.
-        """
+        """Convert the decimal number to octal number."""
         return oct(self.number)
 
 
@@ -68,6 +63,7 @@ class DecimalInteger:
 
 class DecimalString:
 
+
     def __init__(self, input_string: str, results: dict):
         self.input_string = input_string
         self.results = results
@@ -78,11 +74,15 @@ class DecimalString:
             return "".join(chr(int(c)) for c in self.input_string.split())
 
         except ValueError:
-            c.print("[bold bright_red]Error: Please ensure the input only \
-contains numbers separated by spaces.")
+            c.print(
+                "[bold bright_red]Error: Please ensure the input only contains \
+numbers separated by spaces."
+             )
         except OverflowError:
-            c.print("[bold bright_red]Error: One of the numbers is too large \
-to be a valid ascii character.")
+            c.print(
+                "[bold bright_red]Error: One of the numbers is too large to be a \
+valid ascii character."
+             )
 
 
     def decimal_to_base64(self) -> str:
