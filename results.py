@@ -1,4 +1,5 @@
 # !/usr/bin/env python3
+#DLU : 26-Jul-2026
 
 from rich import box
 from rich.align import Align
@@ -20,10 +21,12 @@ class Results:
 
 
     def print_rotation_results(self, results: str) -> str:
-        output = c.print(f"""[bold blue]
+        output = c.print(
+            f"""[bold blue]
 \nString Rotation Results
 -----------------------\n
-[bold khaki3]{results}\n""")
+[bold khaki3]{results}\n"""
+            )
         return output
 
 
