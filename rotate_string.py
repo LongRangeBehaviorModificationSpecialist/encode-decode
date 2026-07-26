@@ -18,7 +18,8 @@ class RotateString:
         lc = string.ascii_lowercase
         uc = string.ascii_uppercase
         trans = str.maketrans(
-            lc + uc, lc[self.n:] + lc[:self.n] + uc[self.n:] + uc[:self.n])
+            lc + uc, lc[self.n:] + lc[:self.n] + uc[self.n:] + uc[:self.n]
+        )
         rotated_string = str.translate(self.input_string, trans)
         Results.print_rotation_results(self, results=rotated_string)
 
