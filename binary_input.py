@@ -5,9 +5,7 @@ from results import Results
 
 
 class Binary:
-    """
-    Utility class for binary conversions.
-    """
+    """Utility class for binary conversions."""
 
 
     def __init__(self, input_string: str, results: dict):
@@ -16,8 +14,7 @@ class Binary:
 
 
     def _validate(self) -> str:
-        """
-        Validates that the input is a non-empty binary string.
+        """Validates that the input is a non-empty binary string.
 
         Returns the cleaned string.
         """
@@ -39,9 +36,7 @@ class Binary:
 
 
     def binary_to_ascii(self) -> str:
-        """
-        Converts binary string to ascii representation.
-        """
+        """Converts binary string to ascii representation."""
         self.input_string = self.input_string.replace(" ", "")
         list = []
         for i in range(0, len(self.input_string), 8):
@@ -50,9 +45,7 @@ class Binary:
 
 
     def binary_to_base64(self) -> str:
-        """
-        Converts a binary string to base64 string.
-        """
+        """Converts a binary string to base64 string."""
         binary_string = self._validate()
         # Pad binary string so length is multiple of 8
         padding_length = (8 - len(binary_string) % 8) % 8
@@ -67,9 +60,7 @@ class Binary:
 
 
     def binary_to_base32(self) -> str:
-        """
-        Converts a binary string to base32 string.
-        """
+        """Converts a binary string to base32 string."""
         binary_string = self._validate()
         # Ensure the binary string is a multiple of 8 bits by padding
         # with leading zeros
@@ -88,17 +79,14 @@ class Binary:
 
 
     def binary_to_decimal_int(self) -> int:
-        """
-        Converts a binary string to a decimal integer.
-        """
+        """Converts a binary string to a decimal integer."""
         binary_string = self._validate()
         binary_string = binary_string.replace(" ", "")
         return f"{int(binary_string, 2):,}"
 
 
     def binary_to_decimal_char(self) -> str:
-        """
-        Converts each 8-bit byte chunk into its individual decimal
+        """Converts each 8-bit byte chunk into its individual decimal
         value and returns them as a single space-seperated string.
         """
         binary_string = self._validate()
@@ -108,9 +96,7 @@ class Binary:
 
 
     def binary_to_hexadecimal(self) -> str:
-        """
-        Converts a binary string to a hexadecimal string.
-        """
+        """Converts a binary string to a hexadecimal string."""
         binary_string = self._validate()
         decimal_value = int(binary_string, 2)
         hex_string = f"{decimal_value:X}"
@@ -121,9 +107,7 @@ class Binary:
 
 
     def binary_to_octal(self) -> str:
-        """
-        Converts a binary string to a octal string.
-        """
+        """Converts a binary string to a octal string."""
         binary_string = self._validate()
         return oct(int(binary_string, 2))[2:]
 
