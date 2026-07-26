@@ -1,4 +1,5 @@
 # !/usr/bin/env python3
+# DLU : 26-Jul-2026
 
 import base64
 from results import Results
@@ -40,7 +41,7 @@ class Binary:
         self.input_string = self.input_string.replace(" ", "")
         list = []
         for i in range(0, len(self.input_string), 8):
-            list.append(self.input_string[i:i+8])
+            list.append(self.input_string[i : i + 8])
         return "".join([chr(int(i, 2)) for i in list])
 
 
@@ -53,7 +54,7 @@ class Binary:
         # Convert binary string to bytes
         byte_array = bytearray()
         for i in range(0, len(binary_string), 8):
-            byte = binary_string[i:i+8]
+            byte = binary_string[i : i + 8]
             byte_array.append(int(byte, 2))
         # Encode to base64
         return base64.b64encode(byte_array).decode("utf-8")
@@ -71,7 +72,7 @@ class Binary:
 
         byte_list = []
         for i in range(0, len(binary_string), 8):
-            byte_chunk = binary_string[i:i+8]
+            byte_chunk = binary_string[i : i + 8]
             byte_list.append(int(byte_chunk, 2))
 
         raw_bytes = bytes(byte_list)
@@ -91,7 +92,7 @@ class Binary:
         """
         binary_string = self._validate()
         clean_binary = binary_string.replace(" ", "")
-        binary_bytes = [clean_binary[i:i+8] for i in range(0, len(clean_binary), 8)]
+        binary_bytes = [clean_binary[i : i + 8] for i in range(0, len(clean_binary), 8)]
         return " ".join([str(int(b, 2)) for b in binary_bytes])
 
 
@@ -102,7 +103,7 @@ class Binary:
         hex_string = f"{decimal_value:X}"
         if len(hex_string) % 2 !=0:
             hex_string = "0" + hex_string
-        return " ".join(hex_string[i:i+2] for i in range(0, len(hex_string), 2))
+        return " ".join(hex_string[i : i + 2] for i in range(0, len(hex_string), 2))
 
 
 
