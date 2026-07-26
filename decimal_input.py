@@ -38,7 +38,7 @@ class DecimalInteger:
         hex_str = hex(self.number)[2:]
         if len(hex_str) % 2 != 0:
             hex_str = "0" + hex_str
-        pairs = [hex_str[i:i+2] for i in range(0, len(hex_str), 2)]
+        pairs = [hex_str[i : i + 2] for i in range(0, len(hex_str), 2)]
         return "0x " + " ".join(pairs).upper()
 
 
