@@ -1,4 +1,5 @@
 # !/usr/bin/env python3
+# DLU : 26-Jul-2026
 
 import base64
 import functools
@@ -8,9 +9,7 @@ from morse_code import MorseCode
 
 
 def handle_exceptions(func):
-    """
-    Defining the error handling decorator.
-    """
+    """Defining the error handling decorator."""
     # Preserves the original function's name and docstring
     @functools.wraps(func)
     def wrapper(self, *args, **kwargs):
@@ -48,8 +47,7 @@ class Hexadecimal:
 
     @handle_exceptions
     def hex_to_ascii(self) -> str:
-        """
-        Converts a hexadecimal string to its representation in ascii
+        """Converts a hexadecimal string to its representation in ascii
         characters.
         """
         # hex_str = self.clean_hex_input(input_string)
@@ -61,9 +59,7 @@ class Hexadecimal:
 
     @handle_exceptions
     def hex_to_base64(self) -> str:
-        """
-        Converts a hexadecimal string to its base64 representation.
-        """
+        """Converts a hexadecimal string to its base64 representation."""
         hex_str = self.clean_hex_input(self.input_string)
         raw_bytes = bytes.fromhex(hex_str)
         return base64.b64encode(raw_bytes).decode("utf-8")
@@ -71,17 +67,14 @@ class Hexadecimal:
 
     @handle_exceptions
     def hex_to_binary(self) -> str:
-        """
-        Converts a hexadecimal string to its binary representation.
-        """
+        """Converts a hexadecimal string to its binary representation."""
         hex_str = self.clean_hex_input(self.input_string)
         return " ".join(f"{b:08b}" for b in bytes.fromhex(hex_str))
 
 
     @handle_exceptions
     def hex_to_decimal(self) -> str:
-        """
-        Converts a hex string to signed and unsigned representations.
+        """Converts a hex string to signed and unsigned representations.
 
         Args:
             hex_str (str): Hex string (e.g. 'FFFF', '0xFF').
