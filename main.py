@@ -45,25 +45,33 @@ class Convert:
 
 
     def print_error_msg(self, e: str) -> str:
-        return c.print(f"""[bold bright_red]
-[!] There was an error during processing: {e}\n""")
+        return c.print(
+            f"""[bold bright_red]
+[!] There was an error during processing: {e}\n"""
+            )
 
 
     def get_input(self) -> str:
-        input_string = Prompt.ask(f"""[bright_white]
-[-] Enter the data you want to convert """)
+        input_string = Prompt.ask(
+            f"""[bright_white]
+[-] Enter the data you want to convert """
+            )
         return input_string
 
 
     def get_cipher_shift_value(self) -> int:
-        shift_value: int = Prompt.ask("""[bright_white]
-[-] Enter a numeric value for the shift you want to use """)
+        shift_value: int = Prompt.ask(
+            """[bright_white]
+[-] Enter a numeric value for the shift you want to use """
+            )
         return shift_value
 
 
     def no_valid_yn_option(self) -> None:
-        c.print("""[bold bright_red]
-[!] You did not enter a valid choice ("y" or "n"). Please try again.""")
+        c.print(
+            """[bold bright_red]
+[!] You did not enter a valid choice ("y" or "n"). Please try again."""
+            )
 
 
     def main(self) -> None:
@@ -94,7 +102,8 @@ class Convert:
             expand=True)
 
         main_menu.add_row(
-            "[khaki3][?] What type of encoding/decoding do you want to do?\n")
+            "[khaki3][?] What type of encoding/decoding do you want to do?\n"
+        )
         for key, value in menu.items():
             main_menu.add_row(f"[bright_white]  [{key}]  {value}")
 
@@ -113,12 +122,16 @@ class Convert:
 
         elif input_option == "2":
             input_string = self.get_input()
-            Base64(input_string=input_string, results={}).print_base64_output()
+            Base64(
+                input_string=input_string,
+                results={}).print_base64_output()
 
 
         elif input_option == "3":
             input_string = self.get_input()
-            Binary(input_string=input_string, results={}).print_binary_output()
+            Binary(
+                input_string=input_string,
+                results={}).print_binary_output()
 
 
         elif input_option == "4":
@@ -170,8 +183,10 @@ class Convert:
             sys.exit(0)
 
         else:
-            c.print(f"""[bold bright_red]\n
-[!] Invalid choice entered. Please enter a valid option.""")
+            c.print(
+                f"""[bold bright_red]\n
+[!] Invalid choice entered. Please enter a valid option."""
+            )
             self.main()
 
 
