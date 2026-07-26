@@ -16,23 +16,17 @@ class Ascii:
 
 
     def ascii_to_base64(self) -> str:
-        """
-        Convert the ascii input string to base64 string.
-        """
+        """Convert the ascii input string to base64 string."""
         return base64.b64encode(self.input_string.encode()).decode()
 
 
     def ascii_to_base32(self) -> str:
-        """
-        Converts an ascii string to its base32 encoded representation.
-        """
+        """Converts an ascii string to its base32 encoded representation."""
         return base64.b32encode(self.input_string.encode()).decode("ascii")
 
 
     def ascii_to_binary(self) -> str:
-        """
-        Convert the ascii input string to binary string.
-        """
+        """Convert the ascii input string to binary string."""
         b = ""
         for c in self.input_string:
             b += bin(ord(c))[2:].zfill(8)
@@ -41,23 +35,17 @@ class Ascii:
 
 
     def ascii_to_decimal(self) -> str:
-        """
-        Convert the ascii input string to decimal string.
-        """
+        """Convert the ascii input string to decimal string."""
         return " ".join(str(x) for x in [ord(i) for i in self.input_string])
 
 
     def ascii_to_hexadecimal(self) -> str:
-        """
-        Convert the ascii input string to hexadecimal string.
-        """
+        """Convert the ascii input string to hexadecimal string."""
         return " ".join(f"{ord(c):02X}" for c in self.input_string)
 
 
     def ascii_to_rot13(self) -> str:
-        """
-        Convert the ascii input string to rot13 string.
-        """
+        """Convert the ascii input string to rot13 string."""
         return codecs.encode(self.input_string, "rot_13")
 
 
