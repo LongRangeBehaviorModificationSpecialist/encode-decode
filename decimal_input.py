@@ -75,14 +75,14 @@ class DecimalString:
 
         except ValueError:
             c.print(
-                "[bold bright_red]Error: Please ensure the input only contains \
-numbers separated by spaces."
-             )
+                """[bright_red]
+[!] Error: Please ensure the input only contains numbers separated by spaces."""
+            )
         except OverflowError:
             c.print(
-                "[bold bright_red]Error: One of the numbers is too large to be a \
-valid ascii character."
-             )
+                """[bright_red]
+Error: One of the numbers is too large to be a valid ascii character."""
+            )
 
 
     def decimal_to_base64(self) -> str:
