@@ -70,7 +70,7 @@ class Convert:
 
     def no_valid_yn_option(self) -> None:
         c.print(
-            """[bold bright_red]
+            """[bright_red]
 [!] You did not enter a valid choice ("y" or "n"). Please try again."""
             )
 
@@ -103,10 +103,14 @@ class Convert:
             expand=True)
 
         main_menu.add_row(
-            "[khaki3][?] What type of encoding/decoding do you want to do?\n"
+            """[khaki3]
+[?] What type of encoding/decoding do you want to do?\n"""
         )
         for key, value in menu.items():
-            main_menu.add_row(f"[bright_white]  [{key}]  {value}")
+            main_menu.add_row(
+                f"""[bright_white]  
+    [{key}]  {value}"""
+            )
 
         # Add blank line at end of options
         main_menu.add_row()
@@ -115,7 +119,8 @@ class Convert:
 
         input_option = (
             Prompt.ask(
-"""[khaki3]ENTER CHOICE"""
+                """[khaki3]
+ENTER CHOICE"""
             )
             .lower()
             .strip()
