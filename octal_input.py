@@ -1,4 +1,5 @@
 # !/usr/bin/env python3
+# DLU : 26-Jul-2026
 
 from results import Results
 
@@ -12,8 +13,7 @@ class Octal:
 
 
     def octal_to_binary(self) -> str:
-        """
-        Converts an octal string to binary.
+        """Converts an octal string to binary.
 
         Args:
             input_string: A string of octal numbers.
@@ -34,8 +34,7 @@ class Octal:
 
 
     def octal_to_decimal(self) -> str:
-        """
-        Converts an octal string to a decimal integer.
+        """Converts an octal string to a decimal integer.
 
         Args:
             input_string: A string of octal numbers.
@@ -48,8 +47,7 @@ class Octal:
 
 
     def octal_to_hexadecimal(self) -> str:
-        """
-        Converts an octal string to hexadecimal.
+        """Converts an octal string to hexadecimal.
 
         Args:
             input_string: A string of octal numbers.
