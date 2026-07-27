@@ -2,10 +2,8 @@
 # DLU : 26-Jul-2026
 
 import base64
-
 from rich.console import Console
 from rich.traceback import install
-
 from results import Results
 
 
@@ -76,12 +74,12 @@ class DecimalString:
         except ValueError:
             c.print(
                 """[bright_red]
-[!] Error: Please ensure the input only contains numbers separated by spaces."""
+[!] Error : Please ensure the input only contains numbers separated by spaces."""
             )
         except OverflowError:
             c.print(
                 """[bright_red]
-Error: One of the numbers is too large to be a valid ascii character."""
+[!] Error : One of the numbers is too large to be a valid ascii character."""
             )
 
 

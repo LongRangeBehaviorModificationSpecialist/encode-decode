@@ -1,5 +1,5 @@
 # !/usr/bin/env python3
-# DLU : 26-Jul-2026
+# DLU : 27-Jul-2026
 
 from rich.console import Console
 from rich.traceback import install
@@ -108,10 +108,12 @@ class MorseCode:
                         # Adding space to separate words
                         decipher += " "
                     else:
-                        # Accessing the keys using their values (reverse of encryption)
+                        # Accessing the keys using their values
+                        # (reverse of encryption)
                         decipher += list(
                             MorseCode.MORSE_CODE_DICT.keys())[list(
-                                MorseCode.MORSE_CODE_DICT.values()).index(ciphertext)]
+                                MorseCode.MORSE_CODE_DICT.values()
+                                ).index(ciphertext)]
                         ciphertext = ""
             return decipher
         else:
@@ -132,10 +134,3 @@ try again."""
     def print_morse_code_output(self) -> None:
         output = self.make_data_dict()
         Results.print_results_table(self, results_dict=output)
-
-
-"""
-
-Morse Code : -- .. -.- .  ... .--. --- -.
-
-"""

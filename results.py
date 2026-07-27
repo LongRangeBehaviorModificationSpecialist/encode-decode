@@ -1,9 +1,10 @@
 # !/usr/bin/env python3
-# DLU : 26-Jul-2026
+# DLU : 27-Jul-2026
 
 from rich import box
 from rich.align import Align
 from rich.console import Console, Group
+from rich.traceback import install
 from rich.panel import Panel
 from rich.table import Table
 from rich.text import Text
@@ -11,6 +12,7 @@ from rich.text import Text
 
 # Make the console object
 c = Console()
+install()
 
 
 class Results:
@@ -21,13 +23,12 @@ class Results:
 
 
     def print_rotation_results(self, results: str) -> str:
-        output = c.print(
+        return c.print(
             f"""[bold blue]
 String Rotation Results
 -----------------------
 [bold khaki3]{results}\n"""
         )
-        return output
 
 
     def print_results_table(self, results_dict: dict) -> None:

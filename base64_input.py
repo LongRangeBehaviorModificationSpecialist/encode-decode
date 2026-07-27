@@ -1,10 +1,13 @@
 # !/usr/bin/env python3
-# DLU : 26-Jul-2026
+# DLU : 27-Jul-2026
 
 import base64
-
+from rich.traceback import install
 from results import Results
 from morse_code import MorseCode
+
+
+install()
 
 
 class Base64:

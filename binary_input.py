@@ -1,8 +1,12 @@
 # !/usr/bin/env python3
-# DLU : 26-Jul-2026
+# DLU : 27-Jul-2026
 
 import base64
+from rich.traceback import install
 from results import Results
+
+
+install()
 
 
 class Binary:
@@ -30,8 +34,8 @@ class Binary:
         clean_binary = self.input_string.replace(" ", "")
         if len(clean_binary) % 8 != 0:
             raise ValueError(
-                f"Invalid binary length ({len(clean_binary)} bits). "
-                f"The total number of bits must be evenly divisible by 8."
+                f"""Invalid binary length ({len(clean_binary)} bits). \
+The total number of bits must be evenly divisible by 8."""
             )
         return self.input_string
 
@@ -68,7 +72,9 @@ class Binary:
         remainder = len(binary_string) % 8
 
         if remainder != 0:
-            binary_string = binary_string.zfill(len(binary_string) + (8 - remainder))
+            binary_string = (
+                binary_string.zfill(len(binary_string) + (8 - remainder))
+            )
 
         byte_list = []
         for i in range(0, len(binary_string), 8):
@@ -92,7 +98,10 @@ class Binary:
         """
         binary_string = self._validate()
         clean_binary = binary_string.replace(" ", "")
-        binary_bytes = [clean_binary[i : i + 8] for i in range(0, len(clean_binary), 8)]
+        binary_bytes = [
+            clean_binary[i : i + 8]
+            for i in range(0, len(clean_binary), 8)
+        ]
         return " ".join([str(int(b, 2)) for b in binary_bytes])
 
 
@@ -103,7 +112,9 @@ class Binary:
         hex_string = f"{decimal_value:X}"
         if len(hex_string) % 2 !=0:
             hex_string = "0" + hex_string
-        return " ".join(hex_string[i : i + 2] for i in range(0, len(hex_string), 2))
+        return " ".join(
+            hex_string[i : i + 2] for i in range(0, len(hex_string), 2)
+        )
 
 
 

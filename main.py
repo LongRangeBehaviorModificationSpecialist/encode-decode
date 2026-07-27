@@ -1,5 +1,5 @@
 # !/usr/bin/env python3
-# DLU : 26-Jul-2026
+# DLU : 27-Jul-2026
 
 import sys
 
@@ -32,7 +32,7 @@ class Convert:
     def __init__(self):
         self.author = "mikes"
         self.version = "0.5.6"
-        self.last_updated = "30-Jun-2026"
+        self.last_updated = "27-Jul-2026"
         self.input_type_dict = {
             1: "Ascii",
             2: "Base64",
@@ -48,7 +48,7 @@ class Convert:
     def print_error_msg(self, e: str) -> str:
         return c.print(
             f"""[bright_red]
-[!] There was an error during processing: {e}\n"""
+[!] There was an error during processing : {e}\n"""
             )
 
 
@@ -69,10 +69,12 @@ class Convert:
 
 
     def no_valid_yn_option(self) -> None:
-        c.print(
+        Prompt.ask(
             """[bright_red]
-[!] You did not enter a valid choice ("y" or "n"). Please try again."""
-            )
+[!] You did not enter a valid choice. Please try again.""",
+            choices=["y", "n"],
+            show_choices=True
+        )
 
 
     def main(self) -> None:
@@ -98,7 +100,10 @@ class Convert:
             show_lines=False,
             pad_edge=True,
             padding=(0, 5, 0, 1),
-            caption=f"Written by: {self.author}. Last Updated: {self.last_updated}",
+            caption=(
+                f"Written by : {self.author}. \
+                Last Updated : {self.last_updated}"
+            ),
             caption_justify="left",
             expand=True)
 
@@ -108,7 +113,7 @@ class Convert:
         )
         for key, value in menu.items():
             main_menu.add_row(
-                f"""[bright_white]  
+                f"""[bright_white]
     [{key}]  {value}"""
             )
 
@@ -209,7 +214,7 @@ ENTER CHOICE"""
 
         else:
             c.print(
-                f"""[bright_red]\n
+                f"""[bright_red]
 [!] Invalid choice entered. Please enter a valid option."""
             )
             self.main()

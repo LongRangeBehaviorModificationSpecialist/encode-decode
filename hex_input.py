@@ -1,11 +1,14 @@
 # !/usr/bin/env python3
-# DLU : 26-Jul-2026
+# DLU : 27-Jul-2026
 
 import base64
 import functools
-
+from rich.traceback import install
 from results import Results
 from morse_code import MorseCode
+
+
+install()
 
 
 def handle_exceptions(func):
@@ -18,12 +21,21 @@ def handle_exceptions(func):
         except AttributeError as e:
             return f"{e}"
         except TypeError as e:
-            return f"[Error Handled] {hex_str} caused a TypeError in '{func.__name__}': {e}"
+            return (
+                f"[Error Handled] {hex_str} caused a TypeError in \
+'{func.__name__}' : {e}."
+            )
         except ValueError as e:
             hex_str = args[0] if args else "Unknown Input"
-            return f"[Error Handled] {hex_str} caused a ValueError in '{func.__name__}': {e}"
+            return (
+                f"[Error Handled] {hex_str} caused a ValueError in \
+'{func.__name__}' : {e}."
+            )
         except UnicodeDecodeError:
-            return f"[Error: This hex sequence ({hex_str}) contains binary data that cannot be read as text]"
+            return (
+                f"Error: This hex sequence ({hex_str}) contains binary \
+data that cannot be read as text."
+            )
         except Exception as e:
             return f"[Error Handled] An unexpected error occurred: {e}"
     return wrapper

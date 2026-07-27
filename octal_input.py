@@ -1,7 +1,11 @@
 # !/usr/bin/env python3
-# DLU : 26-Jul-2026
+# DLU : 27-Jul-2026
 
 from results import Results
+from rich.traceback import install
+
+
+install()
 
 
 class Octal:

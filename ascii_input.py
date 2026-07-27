@@ -1,11 +1,14 @@
 # !/usr/bin/env python3
-# DLU: 26-Jul-2026
+# DLU: 27-Jul-2026
 
 import base64
 import codecs
-
+from rich.traceback import install
 from results import Results
 from morse_code import MorseCode
+
+
+install()
 
 
 class Ascii:
@@ -59,7 +62,9 @@ class Ascii:
         self.results["Decimal"] = f"{self.ascii_to_decimal()}"
         self.results["Hexadecimal"] = f"{self.ascii_to_hexadecimal()}"
         self.results["Rot13"] = f"{self.ascii_to_rot13()}"
-        self.results["Morse Code"] = f"{MorseCode.encode_morse_code(self, self.input_string)}"
+        self.results["Morse Code"] = (
+            f"{MorseCode.encode_morse_code(self, self.input_string)}"
+        )
         return self.results
 
 
