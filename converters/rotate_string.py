@@ -1,29 +1,43 @@
 # !/usr/bin/env python3
-# DLU : 27-Jul-2026
+# DLU : 08-Aug-2026
+
 
 import string
+from rich.prompt import Prompt
 from rich.traceback import install
 from results import Results
 
 
-install()
+install(show_locals=True)
 
 
 class RotateString:
 
 
-    def __init__(self, input_string: str, n: int):
-        self.input_string = input_string
-        self.n = int(n)
+    def get_input_value(self) -> None:
+        input = Prompt.ask(
+            f"[white][-] Enter the data you want to convert"
+        )
+        return input
+
+
+    def get_cipher_shift_value(self) -> int:
+        n: int = Prompt.ask(
+            "[white][-] Enter a numeric value for the shift you "
+            "want to use"
+        )
+        return n
 
 
     def rotate_string(self) -> str:
+        input = self.get_input_value()
+        n = self.get_cipher_shift_value()
         lc = string.ascii_lowercase
         uc = string.ascii_uppercase
         trans = str.maketrans(
-            lc + uc, lc[self.n:] + lc[:self.n] + uc[self.n:] + uc[:self.n]
+            lc + uc, lc[n:] + lc[:n] + uc[n:] + uc[:n]
         )
-        rotated_string = str.translate(self.input_string, trans)
+        rotated_string = str.translate(input, trans)
         Results.print_rotation_results(self, results=rotated_string)
 
 

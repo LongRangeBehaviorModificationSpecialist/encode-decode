@@ -3,3 +3,5 @@ __pycache__/
 
 # Ignore directory of old files
 /OLD_FILES/*
+
+TODO.txt

@@ -1,22 +1,19 @@
 # !/usr/bin/env python3
-# DLU : 27-Jul-2026
+# DLU : 08-Aug-2026
+
 
 from results import Results
+from rich.prompt import Prompt
 from rich.traceback import install
 
 
-install()
+install(show_locals=True)
 
 
 class Octal:
 
 
-    def __init__(self, input_string: str, results: dict):
-        self.input_string = input_string
-        self.results = results
-
-
-    def octal_to_binary(self) -> str:
+    def octal_to_binary(self, input: str) -> str:
         """Converts an octal string to binary.
 
         Args:
@@ -25,7 +22,7 @@ class Octal:
         Returns:
             The binary equivalent of the octal numbers.
         """
-        octal_list = self.input_string.split()
+        octal_list = input.split()
         binary_results = []
         for n in octal_list:
             # Convert octal string to decimal integer
@@ -37,7 +34,7 @@ class Octal:
         return " ".join(binary_results)
 
 
-    def octal_to_decimal(self) -> str:
+    def octal_to_decimal(self, input: str) -> str:
         """Converts an octal string to a decimal integer.
 
         Args:
@@ -46,11 +43,11 @@ class Octal:
         Returns:
             The decimal equivalent of the octal numbers.
         """
-        decimal_vals = [int(num, 8) for num in self.input_string.split()]
+        decimal_vals = [int(num, 8) for num in input.split()]
         return " ".join(map(str, decimal_vals))
 
 
-    def octal_to_hexadecimal(self) -> str:
+    def octal_to_hexadecimal(self, input: str) -> str:
         """Converts an octal string to hexadecimal.
 
         Args:
@@ -59,20 +56,24 @@ class Octal:
         Returns:
             The hexadecimal representation of the octal numbers.
         """
-        octal_list = self.input_string.split()
+        octal_list = input.split()
         hex_number = [hex(int(num, 8))[2:].upper() for num in octal_list]
         return " ".join(hex_number)
 
 
-    def make_data_dict(self) -> dict:
-        self.results["type"] = "Octal"
-        self.results["user_input"] = f"{self.input_string}"
-        self.results["Binary"] = f"{self.octal_to_binary()}"
-        self.results["Decimal"] = f"{self.octal_to_decimal()}"
-        self.results["Hexadecimal"] = f"{self.octal_to_hexadecimal()}"
-        return self.results
+    def make_data_dict(self, input: str) -> dict:
+        results = {}
+        results["Input Type"] = "Octal"
+        results["Input Value"] = f"{input}"
+        results["binary"] = f"{self.octal_to_binary()}"
+        results["decimal"] = f"{self.octal_to_decimal()}"
+        results["hexadecimal"] = f"{self.octal_to_hexadecimal()}"
+        return results
 
 
-    def print_octal_output(self) -> None:
-        results_dict = self.make_data_dict()
-        Results.print_results_table(self, results_dict=results_dict)
+    def run_octal_convert(self) -> None:
+        input = Prompt.ask(
+            f"[white][-] Enter the data you want to convert"
+        )
+        results = self.make_data_dict(input=input)
+        Results.print_results_table(self, results_dict=results)
