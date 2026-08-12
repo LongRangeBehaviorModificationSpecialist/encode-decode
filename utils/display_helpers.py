@@ -21,8 +21,4 @@ def escape_for_display(text: str, max_length: int = 100) -> str:
     text = text.replace('\r', '\\r')
     text = text.replace('\t', '\\t')
 
-    # Truncate very long strings
-    # if len(text) > max_length:
-    #     text = text[:max_length] + "..."
-
     return text
