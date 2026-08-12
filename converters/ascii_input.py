@@ -26,25 +26,6 @@ class Ascii:
         self.morse_code = MorseCode()
 
 
-    # @staticmethod
-    # def escape_for_display(text: str) -> str:
-    #     """Escape special characters for clean table display."""
-    #     if not text:
-    #         return "(empty)"
-
-    #     # Replace newlines with explicit markers
-    #     text = text.replace('\n', '\\n')
-    #     text = text.replace('\r', '\\r')
-    #     text = text.replace('\t', '\\t')
-
-    #     # Truncate very long strings
-    #     # MAX_DISPLAY_LEN = 50
-    #     # if len(text) > MAX_DISPLAY_LEN:
-    #     #     text = text[:MAX_DISPLAY_LEN] + "..."
-
-    #     return text
-
-
     def validate_ascii_input(self, input: str) -> Tuple[bool, str]:
         """Comprehensive input validation."""
         if not input:
@@ -92,7 +73,7 @@ class Ascii:
                 elif mode == "replace":
                     # Replace control chars
                     sanitized.append('?')
-                # strict mode
+                # Strict mode
                 else:
                     raise ValueError(f"Control character at position: ord({code})")
             # Non-ASCII characters
@@ -102,8 +83,7 @@ class Ascii:
                 elif mode == "replace":
                     sanitized.append('?')
                 else:
-                    raise ValueError(f"Non-ASCII character: '{char}'")
-
+                    raise ValueError(f"Non-ASCII character -> '{char}'")
         return ''.join(sanitized)
 
 
@@ -112,7 +92,6 @@ class Ascii:
         is_valid, error_msg = self.validate_ascii_input(input)
         if not is_valid:
             raise ValueError(error_msg)
-
         return base64.b64encode(input.encode("ascii", errors="ignore")).decode()
 
 
@@ -121,7 +100,6 @@ class Ascii:
         is_valid, error_msg = self.validate_ascii_input(input)
         if not is_valid:
             raise ValueError(error_msg)
-
         return base64.b32encode(input.encode("ascii", errors="ignore")).decode("ascii")
 
 
@@ -130,12 +108,6 @@ class Ascii:
         is_valid, error_msg = self.validate_ascii_input(input)
         if not is_valid:
             raise ValueError(error_msg)
-        # b = ""
-        # for c in input:
-            # b += bin(ord(c))[2:].zfill(8)
-        # s = [b[i:i+8] for i in range(0, len(b), 8)]
-        # return " ".join(x for x in s)
-        # return " ".join(b[i:i+8] for i in range(0, len(b), 8))
         return " ".join(bin(ord(c))[2:].zfill(8) for c in input)
 
 
@@ -144,8 +116,6 @@ class Ascii:
         is_valid, error_msg = self.validate_ascii_input(input)
         if not is_valid:
             raise ValueError(error_msg)
-
-        # return " ".join(str(x) for x in [ord(i) for i in input])
         return " ".join(str(ord(i)) for i in input)
 
 
@@ -154,7 +124,6 @@ class Ascii:
         is_valid, error_msg = self.validate_ascii_input(input)
         if not is_valid:
             raise ValueError(error_msg)
-
         return " ".join(f"{ord(c):02X}" for c in input)
 
 
@@ -163,7 +132,6 @@ class Ascii:
         is_valid, error_msg = self.validate_ascii_input(input)
         if not is_valid:
             raise ValueError(error_msg)
-
         return codecs.encode(input, "rot_13")
 
 
@@ -172,7 +140,6 @@ class Ascii:
         results["Input Type"] = "Ascii"
         results["Input Value"] = f"{input}"
         results["Validation OK"] = True
-
         try:
             results["Base64"] = f"{self.ascii_to_base64(input=input)}"
             results["Base32"] = f"{self.ascii_to_base32(input=input)}"
@@ -186,7 +153,6 @@ class Ascii:
         except ValueError as e:
             results["Validation OK"] = False
             results["error"] = str(e)
-
         return results
 
 
@@ -198,5 +164,5 @@ class Ascii:
             results = self.make_data_dict(input=input)
             Results.print_results_table(results_dict=results)
         except ValueError as e:
-            c.print(f"[red]Validation Error:[/] {e}")
-            c.print("[dim]Tip: Try simpler characters like letters and numbers.[/]")
+            c.print(f"[red1]Validation Error -> {e}")
+            c.print("[dim]Tip: Try simpler characters like letters and numbers.")
