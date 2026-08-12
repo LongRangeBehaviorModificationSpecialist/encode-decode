@@ -1,6 +1,4 @@
 # !/usr/bin/env python3
-# DLU : 08-Aug-2026
-
 
 import base64
 from rich.console import Console
@@ -65,15 +63,14 @@ class DecimalString:
     def decimal_to_ascii(self, input: str) -> str:
         try:
             return "".join(chr(int(c)) for c in input.split())
-
         except ValueError:
             c.print(
-                "[red1][!] Error : Please ensure the input only contains "
+                "[red1][!] Error -> Please ensure the input only contains "
                 "numbers separated by spaces."
             )
         except OverflowError:
             c.print(
-                "[red1][!] Error : One of the numbers is too large to be a "
+                "[red1][!] Error -> One of the numbers is too large to be a "
                 "valid ascii character."
             )
 
