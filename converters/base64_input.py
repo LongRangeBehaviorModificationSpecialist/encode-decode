@@ -1,6 +1,4 @@
 # !/usr/bin/env python3
-# DLU : 08-Aug-2026
-
 
 import base64
 from rich.traceback import install
