@@ -1,6 +1,4 @@
 # !/usr/bin/env python3
-# DLU : 08-Aug-2026
-
 
 import base64
 import functools
@@ -59,10 +57,6 @@ class Hexadecimal:
         """Converts a hexadecimal string to its representation in ascii
         characters.
         """
-        # hex_str = self.clean_hex_input(input_string)
-        # raw_bytes = bytes.fromhex(hex_str)
-        # return raw_bytes.decode("utf-8")
-
         return bytes.fromhex(
             self.clean_hex_input(input)).decode("utf-8")
 
