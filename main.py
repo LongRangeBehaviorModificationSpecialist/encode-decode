@@ -1,9 +1,6 @@
 # !/usr/bin/env python3
-# DLU : 27-Jul-2026
-
 
 import sys
-
 from rich import box
 from rich.console import Console
 from rich.prompt import Prompt
@@ -163,26 +160,23 @@ class Main:
                             return False
                         # --- End Continuation Prompt ---
                     except ValueError as e:
-                        c.print(f"[red]Validation Error:[/] {e}")
-                        c.print(f"[dim]Input may contain invalid characters.[/]")
+                        c.print(f"[red1]Validation Error: {e}")
+                        c.print(f"[dim]Input may contain invalid characters.")
                         # Continue to menu instead of exiting
 
                     except Exception as e:
                         # NEW: Show full traceback for debugging
-                        c.print(f"[red]Unexpected Error:[/] {type(e).__name__}: {e}")
-                        c.print(f"[yellow]Full traceback below:[/yellow]")
+                        c.print(f"[red1]Unexpected Error: {type(e).__name__}: {e}")
+                        c.print(f"[yellow3]Full traceback below:")
                         import traceback
                         c.print(traceback.format_exc())
-                        c.print(f"[dim]Tip: Try simpler input or check the MorseCode module.[/]")
+                        c.print(f"[dim]Tip: Try simpler input or check the MorseCode module")
 
                         # Continue to menu instead of crashing
                         if not self._ask_continue():
                             c.print(get_exit_message(self.config))
                             return False
 
-
-                    # except Exception as e:
-                    #     c.print(f"[red]Error during operation -> {e}")
                 else:
                     c.print(f"[red]Handler not found -> {item.handler_name}")
             else:
@@ -195,7 +189,7 @@ class Main:
     def _ask_continue(self) -> bool:
         """Ask user if they want to continue to main menu."""
         if self.config.show_separator_line:
-            c.print("\n\n[dim]" + "-" * 45 + "[/dim]")
+            c.print("\n\n[dim]" + "-" * 45)
 
         try:
             response = Prompt.ask(
