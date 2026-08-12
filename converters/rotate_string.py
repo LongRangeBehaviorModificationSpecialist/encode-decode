@@ -1,6 +1,4 @@
 # !/usr/bin/env python3
-# DLU : 08-Aug-2026
-
 
 import string
 from rich.prompt import Prompt
