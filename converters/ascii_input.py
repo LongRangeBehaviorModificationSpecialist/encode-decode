@@ -39,15 +39,14 @@ class Ascii:
             code = ord(char)
 
             if code > 127:
-                issues.append(f"Position {pos} -> Non-ASCII '{char}' (U+{code:04X})")
+                issues.append(f"Position {pos} → Non-ASCII '{char}' (U+{code:04X})")
             elif char in self.CONTROL_CHARS:
-                issues.append(f"Position {pos}: Control character (ord={code})")
+                issues.append(f"Position {pos} → Control character (ord={code})")
 
         if issues:
             return False, "; ".join(issues[:3]) + ("..." if len(issues) > 3 else "")
 
         return True, ""
-
 
 
     def sanitize_input(self, input: str, mode: str = "strict") -> str:
@@ -75,7 +74,7 @@ class Ascii:
                     sanitized.append('?')
                 # Strict mode
                 else:
-                    raise ValueError(f"Control character at position: ord({code})")
+                    raise ValueError(f"Control character at position → ord({code})")
             # Non-ASCII characters
             else:
                 if mode == "remove":
@@ -83,7 +82,7 @@ class Ascii:
                 elif mode == "replace":
                     sanitized.append('?')
                 else:
-                    raise ValueError(f"Non-ASCII character -> '{char}'")
+                    raise ValueError(f"Non-ASCII character → '{char}'")
         return ''.join(sanitized)
 
 
@@ -100,7 +99,9 @@ class Ascii:
         is_valid, error_msg = self.validate_ascii_input(input)
         if not is_valid:
             raise ValueError(error_msg)
-        return base64.b32encode(input.encode("ascii", errors="ignore")).decode("ascii")
+        return base64.b32encode(
+            input.encode("ascii", errors="ignore")
+        ).decode("ascii")
 
 
     def ascii_to_binary(self, input: str) -> str:
@@ -163,6 +164,6 @@ class Ascii:
         try:
             results = self.make_data_dict(input=input)
             Results.print_results_table(results_dict=results)
-        except ValueError as e:
-            c.print(f"[red1]Validation Error -> {e}")
+        except ValueError as err:
+            c.print(f"[bright_red]Validation Error -> {err}")
             c.print("[dim]Tip: Try simpler characters like letters and numbers.")
