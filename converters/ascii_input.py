@@ -165,5 +165,5 @@ class Ascii:
             results = self.make_data_dict(input=input)
             Results.print_results_table(results_dict=results)
         except ValueError as err:
-            c.print(f"[bright_red]Validation Error -> {err}")
+            c.print(f"[bright_red]Validation Error → {err}")
             c.print("[dim]Tip: Try simpler characters like letters and numbers.")
