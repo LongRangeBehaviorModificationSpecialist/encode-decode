@@ -4,7 +4,9 @@ from dataclasses import dataclass, field
 from rich.console import Console
 from typing import Dict, List, Callable, Any, Optional
 
+
 c = Console()
+
 
 @dataclass
 class MenuItem:
@@ -37,8 +39,8 @@ class AppConfig:
     title_color: str = "dodger_blue1"
     header_style: str = "bold #2070b2"
     exit_text_color: str = "#d700d7"
-    warning_color: str = "yellow3"
-    success_color: str = "green3"
+    warning_color: str = "bright_yellow"
+    success_color: str = "bright_green"
 
     # Continuation prompt settings
     continue_prompt_text: str = "Would you like to return to the main menu?"
