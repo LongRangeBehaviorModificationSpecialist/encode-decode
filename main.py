@@ -36,7 +36,7 @@ install(show_locals=True, console=c)
 class Main:
 
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.config = AppConfig()
         self._author = __author__
         self._version = __version__
@@ -67,7 +67,7 @@ class Main:
         }
 
 
-    def _get_handler_by_name(self, handler_name: str):
+    def _get_handler_by_name(self, handler_name: str) -> None:
         """Resolve handler name to actual object."""
         # Parse "module.method" format
         parts = handler_name.rsplit(".", 1)
@@ -133,7 +133,7 @@ class Main:
         # Check for valid menu item
         if normalized not in [k.lower() for k in self.config.menu_items.keys()]:
             c.print(
-                f"[{self.config.warning_color}][red1] Unknown choice -> "
+                f"[{self.config.warning_color}][red1] Unknown choice → "
                 f"{selection}. Please enter a valid option or 'Q' to exit."
             )
             # Continue loop
@@ -159,15 +159,17 @@ class Main:
                             c.print(get_exit_message(self.config))
                             return False
                         # --- End Continuation Prompt ---
-                    except ValueError as e:
-                        c.print(f"[red1]Validation Error: {e}")
+                    except ValueError as err:
+                        c.print(f"[red1]Validation Error → {err}")
                         c.print(f"[dim]Input may contain invalid characters.")
                         # Continue to menu instead of exiting
 
-                    except Exception as e:
+                    except Exception as err:
                         # NEW: Show full traceback for debugging
-                        c.print(f"[red1]Unexpected Error: {type(e).__name__}: {e}")
-                        c.print(f"[yellow3]Full traceback below:")
+                        c.print(
+                            f"[red1]Unexpected Error → {type(err).__name__}: {err}"
+                        )
+                        c.print(f"[bright_yellow]Full traceback below:")
                         import traceback
                         c.print(traceback.format_exc())
                         c.print(f"[dim]Tip: Try simpler input or check the MorseCode module")
@@ -178,9 +180,9 @@ class Main:
                             return False
 
                 else:
-                    c.print(f"[red]Handler not found -> {item.handler_name}")
+                    c.print(f"[bright_red]Handler not found → {item.handler_name}")
             else:
-                c.print(f"[yellow3]No handler configured for '{item.label}'")
+                c.print(f"[bright_yellow]No handler configured for '{item.label}'")
 
         # Continue loop
         return True
@@ -225,13 +227,13 @@ class Main:
 
             except KeyboardInterrupt:
                 c.print(
-                    f"\n\n[{self.config.warning_color}]-> Program interrupted "
+                    f"\n\n[{self.config.warning_color}]→ Program interrupted "
                     "by user..."
                 )
                 c.print(get_exit_message(self.config))
                 sys.exit(0)
             except EOFError:
-                c.print("\n[red1]EOF received. Exiting...")
+                c.print("\n[bright_red]EOF received. Exiting...")
                 sys.exit(0)
 
 
@@ -244,9 +246,9 @@ if __name__ == "__main__":
         app = Main()
         app.main()
     except KeyboardInterrupt:
-        c.print("\n[yellow3]-> Program interrupted by user. Exiting...")
+        c.print("\n[bright_yellow]-> Program interrupted by user. Exiting...")
         sys.exit(0)
     except Exception as e:
-        c.print(f"[red1]Unexpected error -> {e}")
+        c.print(f"[bright_red]Unexpected error → {e}")
         sys.exit(1)
 
