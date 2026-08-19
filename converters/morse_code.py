@@ -15,11 +15,11 @@ class MorseCode:
     """Python program to implement Morse Code Translator
 
         VARIABLE KEY
-        "cipher"     -> "stores the morse translated form of the english string"
-        "decipher"   -> "stores the english translated form of the morse string"
-        "ciphertext" -> "stores morse code of a single character"
-        "i"          -> "keeps count of the spaces between morse characters"
-        "message"    -> "stores the string to be encoded or decoded"
+        "cipher"    → "stores the morse translated form of the english string"
+        "decipher"   → "stores the english translated form of the morse string"
+        "ciphertext" → "stores morse code of a single character"
+        "i"          → "keeps count of the spaces between morse characters"
+        "message"    → "stores the string to be encoded or decoded"
     """
 
     # Dictionary representing the morse code chart
